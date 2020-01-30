@@ -1,0 +1,414 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+	<% include("include/head.inc"); %>
+  <script type="text/javascript" src="js/webmap.js"></script>
+  <script type="text/javascript" src="js/com.js"></script> 
+</head>
+
+<body>
+<% include("include/logo.inc"); %>
+<% include("include/menubrd.inc"); %>
+
+<div id="window_body">
+<table>
+  <tr>
+    <td style="vertical-align:top">
+      <table class="cw"> 
+        <tr>
+          <td class="cwt" colspan="3">
+            <span>MBU Communication Transition Module</span>
+            <!-- <span name="webmap" title="INP@0x00003804 T=string L=7"></span>] -->
+          </td>
+        </tr>
+        <tr>
+          <td class="cws" style="vertical-align:top">
+            <table class="t"  id="webmap2">
+              <tr>
+                <td class="tt" colspan="3" id="test_callback">
+                  Hardware
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:40px">S/N</td>
+                <td class="tcb"  style="width:100px" id="com_sn"></td>
+              </tr>
+            </table>
+            <table class="t"  id="webmap2">
+              <tr>
+                <td class="tt" colspan="3" id="test_callback">
+                  Clock Switch
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:120px">SW EN0</td>
+                <td class="tcb" id="sw_en0" style="width:20px"></td>
+              </tr>
+              <tr>
+                <td class="tlrb">SW SEL0</td>
+                <td class="tcb" id="sw_sel0" ></td>
+              </tr>
+              <tr>
+                <td class="tlrb">SW EN1</td>
+                <td class="tcb" id="sw_en1" ></td>
+              </tr>
+              <tr>
+                <td class="tlrb">SW SEL1</td>
+                <td class="tcb" id="sw_sel1" ></td>
+              </tr>
+              <tr>
+                <td class="tlrb">SW EN RT2</td>
+                <td class="tcb" id="sw_en_rt2" ></td>
+              </tr>
+              <tr>
+                <td class="tlrb">SW EN RT1</td>
+                <td class="tcb" id="sw_en_rt1" ></td>
+              </tr>
+              <tr>
+                <td class="tlrb">RJ45</td>
+                <td class="tcb" id="rj45_status" ></td>
+              </tr>
+            </table>
+          </td>
+          <td class="cws" style="vertical-align:top">
+            <table class="t"  id="webmap2">
+              <tr>
+                <td class="tt" colspan="5" id="test_callback">
+                  SFPs
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:70px"></td>
+                <td class="tlrb" style="width:70px">SFP IN</td>
+                <td class="tlrb" style="width:70px">RX LOSS</td>
+                <td class="tlrb" style="width:70px">TX FAULT</td>
+                <td class="tlrb" style="width:70px">TX DISABLE</td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:140px">SYS GTX0</td>
+                <td class="tcrb" id="sys_gtx0_sfp_in"></td>
+                <td class="tcrb" id="sys_gtx0_rx_loss"></td>
+                <td class="tcrb" id="sys_gtx0_tx_fault"></td>
+                <td class="tcrb" id="sys_gtx0_tx_disable"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:140px">SYS GTX1</td>
+                <td class="tcrb" id="sys_gtx1_sfp_in"></td>
+                <td class="tcrb" id="sys_gtx1_rx_loss"></td>
+                <td class="tcrb" id="sys_gtx1_tx_fault"></td>
+                <td class="tcrb" id="sys_gtx1_tx_disable"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:140px">BPM1 GTX0</td>
+                <td class="tcrb" id="bpm1_gtx0_sfp_in"></td>
+                <td class="tcrb" id="bpm1_gtx0_rx_loss"></td>
+                <td class="tcrb" id="bpm1_gtx0_tx_fault"></td>
+                <td class="tcrb" id="bpm1_gtx0_tx_disable"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:140px">BPM2 GTX0</td>
+                <td class="tcrb" id="bpm2_gtx0_sfp_in"></td>
+                <td class="tcrb" id="bpm2_gtx0_rx_loss"></td>
+                <td class="tcrb" id="bpm2_gtx0_tx_fault"></td>
+                <td class="tcrb" id="bpm2_gtx0_tx_disable"></td>
+              </tr>
+            </table>
+            <table class="t"  id="webmap2">
+              <tr>
+                <td class="tt" colspan="5" id="test_callback">
+                  SFPs Loopback Test
+                </td>
+              </tr>
+              <tr>
+                <td class="tlb" colspan="2">
+                  Connect SYS0 to SYS1
+                </td>
+              </tr> 
+              <tr>
+                <td class="tlrb">  
+                  Enable
+                </td>
+                <td class="tcb">
+                  <form class="forms">
+                    <input type="radio" name="webmap" title="OUT@0x0000012C T=uint32" value="0">Off
+                    <input type="radio" name="webmap" title="OUT@0x0000012C T=uint32" value="1">On
+                  </form>      
+                </tr>
+              </tr> 
+              <tr>
+                <td class="tlrb" >GTX0 Loss of sync</td>
+                <td class="tcrb" id="sys_gtx0_lossofsync"></td>
+              </tr>
+              <tr>
+                <td class="tlrb">
+                  Loss of sync counter
+                </td>
+                <td class="tcrb" name="webmap" title="INP@0x00000132 T=uint16"></td>
+              </tr>
+              <tr>
+                <td class="tlrb">  
+                  Receive counter
+                </td>
+                <td class="tcrb" name="webmap" title="INP@0x00000128 T=uint32"></td>
+              </tr>
+              <tr>
+                <td class="tlrb">
+                  Transmission errors
+                </td>
+                <td class="tcrb" name="webmap" title="INP@0x00000134 T=uint32"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+        <td>
+        </td>
+        <td>
+            <table class="t"  id="webmap2">
+              <tr>
+                <td class="tt" colspan="5" id="test_callback">
+                  HS7 Controllers
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:50px"></td>
+                <td class="tlrb" style="width:50px">Status</td>
+                <td class="tlrb" style="width:50px">Fault</td>
+                <td class="tlrb" style="width:80px">I [A]</td>
+                <td class="tlrb" style="width:80px">Uout [V]</td>
+              </tr>
+              <tr>
+                <td class="tlrb">3V3</td>
+                <td class="tcrb" name="webmap" title="INP@0x00003ACC T=uint8"></td>
+                <td class="tcrb" name="webmap" title="INP@0x00003ACD T=uint8"></td>
+                <td class="tcrb" name="webmap" title="INP@0x00003ACE T=uint8 S=0.0025 P=3"></td>
+                <td class="tcb"  name="webmap" title="INP@0x00003ACF T=uint8 S=0.125 P=2"></td>
+              </tr>
+              <tr>
+                <td class="tlrb">5V0</td>
+                <td class="tcrb" name="webmap" title="INP@0x00003AD0 T=uint8"></td>
+                <td class="tcrb" name="webmap" title="INP@0x00003AD1 T=uint8"></td>
+                <td class="tcrb" name="webmap" title="INP@0x00003AD2 T=uint8 S=0.0025 P=3"></td>
+                <td class="tcb"  name="webmap" title="INP@0x00003AD3 T=uint8 S=0.125 P=2"></td>
+              </tr>
+            </table>
+        </td>
+        </tr>
+      </table>	
+    </td>
+    <td style="vertical-align:top">
+      <table class="cw"> 
+        <tr>
+          <td class="cwt" colspan="2">
+            <span>SYS FPGA Timing Receiver</span>
+            <!-- <span name="webmap" title="INP@0x00003804 T=string L=7"></span>] -->
+          </td>
+        </tr>
+        <tr>
+          <td class="cws" style="vertical-align:top">
+            <table class="t"  id="webmap2">
+              <tr>
+                <td class="tt" colspan="2" id="test_callback">
+                  Inputs
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" >RJ45 TRG</td>
+                <td class="tcb" id="trg1_ext" ></td>
+              </tr>        
+              <tr>
+                <td class="tlrb" style="width:130px">GTX1 Loss of sync</td>
+                <td class="tcrb" style="width:200px" id="sys_gtx1_lossofsync"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" >Loss counter</td>
+                <td class="tcrb" name="webmap" title="INP@0x00000118 T=uint32"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" >216 MHz Locked</td>
+                <td class="tcrb"  id="pll216M_locked"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" >Pulse number</td>
+                <td class="tcb" id="pulse_num"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" >Date/Time</td>
+                <td class="tcb" id="date1"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" >Beam Mode</td>
+                <td class="tcb" id="beam_mode"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" >Section Pattern</td>
+                <td class="tcb" id="section_pattern"></td>
+              </tr>
+            </table>
+          </td>
+          <td class="cws" style="vertical-align:top">
+            <table class="t"  id="webmap2">
+              <tr>
+                <td class="tt" colspan="2" id="test_callback">
+                  Received Events
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:80px">Number</td>
+                <td class="tlrb" style="width:80px">Delay</td>
+              </tr>
+              <tr>
+                <td class="tcrb" id="event0_code">&nbsp;</td>
+                <td class="tcrb" id="event0_delay"></td>
+              </tr>
+              <tr>
+                <td class="tcrb" id="event1_code">&nbsp;</td>
+                <td class="tcrb" id="event1_delay"></td>
+              </tr>
+              <tr>
+                <td class="tcrb" id="event2_code">&nbsp;</td>
+                <td class="tcrb" id="event2_delay"></td>
+              </tr>
+              <tr>
+                <td class="tcrb" id="event3_code">&nbsp;</td>
+                <td class="tcrb" id="event3_delay"></td>
+              </tr>
+              <tr>
+                <td class="tcrb" id="event4_code">&nbsp;</td>
+                <td class="tcrb" id="event4_delay"></td>
+              </tr>
+              <tr>
+                <td class="tcrb" id="event5_code">&nbsp;</td>
+                <td class="tcrb" id="event5_delay"></td>
+              </tr>
+              <tr>
+                <td class="tcrb" id="event6_code">&nbsp;</td>
+                <td class="tcrb" id="event6_delay"></td>
+              </tr>
+              <tr>
+                <td class="tcrb" id="event7_code">&nbsp;</td>
+                <td class="tcrb" id="event7_delay"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>  
+        <tr>
+          <td class="cws" style="vertical-align:top">
+            <table class="t"  id="webmap2">
+              <tr>
+                <td class="tt" colspan="5" id="test_callback">
+                  Bunch Trains
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:60px"></td>
+                <td class="tlrb" style="width:80px">Start</td>
+                <td class="tlrb" style="width:80px">Duration</td>
+                <td class="tlrb" style="width:80px">Increment</td>
+                <td class="tlrb" style="width:80px">Bunch No</td>
+              </tr>
+              <tr>
+                <td class="tlrb">Train 1</td>
+                <td class="tcrb" id="beam1_start"></td>
+                <td class="tcrb" id="beam1_duration"></td>
+                <td class="tcrb" id="beam1_increment"></td>
+                <td class="tcb" id="beam1_length"></td>
+              </tr>
+              <tr>
+                <td class="tlrb">Train 2</td>
+                <td class="tcrb" id="beam2_start"></td>
+                <td class="tcrb" id="beam2_duration"></td>
+                <td class="tcrb" id="beam2_increment"></td>
+                <td class="tcb"  id="beam2_length"></td>
+              </tr>
+            </table>
+          </td>
+          <td class="cws" style="vertical-align:top">
+            <table class="t"  id="webmap2">
+              <tr>
+                <td class="tt" colspan="2" id="test_callback">
+                  BPM Events
+                </td>
+              <tr>
+                <td class="tlrb" style="width:80px">BPM1</td>
+                <td>
+            			<input type="text" class="num_input" name="webmap" style="width:74px" title="OUT@0x00000104 T=uint8"> 
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:80px">BPM2</td>
+                <td>
+            			<input type="text" class="num_input" name="webmap" style="width:74px" title="OUT@0x00000105 T=uint8"> 
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:80px">BPM3</td>
+                <td>
+            			<input type="text" class="num_input" name="webmap" style="width:74px" title="OUT@0x00000106 T=uint8"> 
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:80px">BPM4</td>
+                <td>
+            			<input type="text" class="num_input" name="webmap" style="width:74px" title="OUT@0x00000107 T=uint8"> 
+                </td>
+              </tr>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</div>
+
+<!-- Hidden readout fields used by higher layer to adjust display -->
+<p>
+  <span class="com_sn"          name="webmap" title="INP@0x00003AC4 T=string L=7" style="display:none"></span>
+  <span class="sys_gtx_status"  name="webmap" title="INP@0x00000110 T=uint32"     style="display:none"></span> 
+  <span class="trg1_ext"        name="webmap" title="INP@0x00000100 T=uint32"     style="display:none"></span> 
+  <span class="com_sfp_status"  name="webmap" title="INP@0x00100034 T=uint32"     style="display:none"></span> 
+  <span class="com_rj45_status" name="webmap" title="INP@0x00100038 T=uint32"     style="display:none"></span> 
+  <span class="pulse_num"       name="webmap" title="INP@0x00008000 T=uint32"     style="display:none"></span> 
+  <span class="date1"           name="webmap" title="INP@0x0000800C T=uint32"     style="display:none"></span> 
+  <span class="beam_mode"       name="webmap" title="INP@0x00008010 T=uint32"     style="display:none"></span> 
+  <span class="section_pattern" name="webmap" title="INP@0x00008014 T=uint32"     style="display:none"></span> 
+  <span class="beam1_start"     name="webmap" title="INP@0x000080E0 T=uint32"     style="display:none"></span> 
+  <span class="beam1_duration"  name="webmap" title="INP@0x000080E4 T=uint32"     style="display:none"></span> 
+  <span class="beam1_increment" name="webmap" title="INP@0x000080E8 T=uint32"     style="display:none"></span> 
+  <span class="beam1_length"    name="webmap" title="INP@0x000080EC T=uint32"     style="display:none"></span> 
+  <span class="beam2_start"     name="webmap" title="INP@0x000080F0 T=uint32"     style="display:none"></span> 
+  <span class="beam2_duration"  name="webmap" title="INP@0x000080F4 T=uint32"     style="display:none"></span> 
+  <span class="beam2_increment" name="webmap" title="INP@0x000080F8 T=uint32"     style="display:none"></span> 
+  <span class="beam2_length"    name="webmap" title="INP@0x000080FC T=uint32"     style="display:none"></span> 
+  <span class="event0"          name="webmap" title="INP@0x00008018 T=uint32"     style="display:none"></span> 
+  <span class="event1"          name="webmap" title="INP@0x0000801C T=uint32"     style="display:none"></span> 
+  <span class="event2"          name="webmap" title="INP@0x00008020 T=uint32"     style="display:none"></span> 
+  <span class="event3"          name="webmap" title="INP@0x00008024 T=uint32"     style="display:none"></span> 
+  <span class="event4"          name="webmap" title="INP@0x00008028 T=uint32"     style="display:none"></span> 
+  <span class="event5"          name="webmap" title="INP@0x0000802C T=uint32"     style="display:none"></span> 
+  <span class="event6"          name="webmap" title="INP@0x00008030 T=uint32"     style="display:none"></span> 
+  <span class="event7"          name="webmap" title="INP@0x00008034 T=uint32"     style="display:none"></span> 
+  <span class="event8"          name="webmap" title="INP@0x00008038 T=uint32"     style="display:none"></span> 
+  <span class="event9"          name="webmap" title="INP@0x0000803C T=uint32"     style="display:none"></span> 
+</p>
+
+
+<!-- Optional foot section for the WebMAP driver functionality - BEGIN-->
+<div id="webmap_foot">
+	<p id="webmap_info"> 
+		<span id="webmap_version"></span>
+		<span id="webmap_message" style="color:green"></span>
+		<span id="webmap_error" style="color:red"></span>
+	</p>
+</div>
+<!-- Optional foot section for the WebMAP driver functionality - END-->
+
+<p id="webmap_test"></p>
+
+<script type="text/javascript">com_init();</script>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+  <% include("include/head.inc"); %>
+  <script type="text/javascript" src="js/webmap.js"></script>
+  <script type="text/javascript" src="js/ibfbctrl.js"></script>
+</head>
+
+<body>
+<% include("include/logo.inc"); %>
+<% include("include/menumain.inc"); %>
+
+
+<div id="window_body"> 
+<table class="cw">
+  <tr>
+    <td class="cwt" colspan="2">IBFB Settings
+    </td>
+  </tr>
+  <tr>
+    <td style="vertical-align:top">
+      <table class="t">
+        <tr>
+          <td class="tt" colspan="6">Trigger Settings</td>
+        </tr>
+        <tr>
+          <td class="tlnb" style="width:200px">Trigger Source</td>
+        </tr>
+        <tr>
+          <td class="tcnb">
+            <select class="but_bpm_trg_src" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001004"); %> T=uint8"></select>
+          </td>
+        </tr>
+        <tr>
+          <td class="tlnb" style="width:200px">Trigger Mode</td>
+        </tr>
+        <tr>
+          <td class="tcnb">
+            <form class="forms">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001005"); %> T=uint8" value="0">Continuous
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001005"); %> T=uint8" value="1">Single
+            </form>      
+          </td>
+        </tr>
+        <tr>
+          <td class="tcnb">
+            <input type="button" class="webmap_button" value="Single"  name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00000250"); %> T=uint32 C=1">
+          </td>
+          <td class="tlr"></td>    
+        </tr>
+        <tr>
+          <td class="tlnb" id="ibfb_no_ext_trg"></td>
+        </tr>
+        <tr>
+          <td class="tlnb" id="ibfb_no_ext_clk"></td>
+        </tr>
+      </table>
+    </td>
+    <td  style="vertical-align:top">
+      <table class="t"  style="width:800px">
+        <tr>
+          <td class="tt" colspan="6">
+            Timing Settings [clk cycles]
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table style="border-collapse:collapse">
+              <tr>
+                <td style="color:white;width:100px">Trigger</td>
+                <td style="border-bottom:1px solid black;border-right:1px solid black;border-collapse:collapse;width:50px;height:20px"></td>
+                <td style="border-top:1px solid black;border-right:1px solid black;border-collapse:collapse;width:20px"></td>
+                <td style="border-bottom:1px solid black;border-collapse:collapse;width:590px"></td>                
+<!--                 <td style="border-bottom:1px solid black;border-collapse:collapse;width:590px"
+                    name="webmap" 
+                    title="INP@<% webmapAddr("BPM_ADDR","0x00000004"); %> T=uint32">
+                </td>
+ -->              </tr>
+            </table>
+            <table style="border-collapse:collapse">
+              <tr>
+                <td style="color:white;width:100px"></td>
+                <td style="border-right:1px dashed black;border-collapse:collapse;width:50px;height:20px"></td>
+                <td style="border-right:1px dashed black;border-collapse:collapse;width:326px"></td>
+                <td style="border-right:1px dashed black;border-collapse:collapse;width:120px;color:white;text-align:center">Bunch Number</td>
+              </tr>
+            </table>
+            <table style="border-collapse:collapse">
+              <tr>
+                <td style="color:white;width:100px">Bunch</td>
+                <td style="border-bottom:1px solid black;border-right:1px dashed black;border-collapse:collapse;width:50px;height:20px"></td>
+                <td style="border-bottom:1px solid black;border-right:1px solid black;border-collapse:collapse;width:130px;height:20px;text-align:center">
+                  <input  type="text" 
+                      class="num_input" 
+                      name="webmap" 
+                      title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001008"); %> T=uint32 LO=0"
+                      style="width:60px;align:center">      
+                </td>
+                <td style="border-top:1px solid black;border-right:1px solid black;border-collapse:collapse;width:20px"></td>
+                <td style="border-bottom:1px solid black;border-right:1px dashed black;border-collapse:collapse;width:170px"></td>
+                <td style="border-right:1px dashed black;border-collapse:collapse;width:120px;text-align:center;color:white">
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x0000100C"); %> T=uint16 HI=2700 LO=1">
+                </td>
+                <td style="border-bottom:1px solid black;border-right:1px solid black;border-collapse:collapse;width:100px;height:20px"></td>
+                <td style="border-top:1px solid black;border-right:1px solid black;border-collapse:collapse;width:20px"></td>
+                <td style="border-bottom:1px solid black;border-collapse:collapse;width:35px"></td>
+              </tr>
+            </table>
+            <table style="border-collapse:collapse">
+              <tr>
+                <td style="color:white;width:100px"></td>
+                <td style="border-collapse:collapse;width:183px;height:20px;text-align:right"></td>
+                <td style="border-right:1px dashed black;border-collapse:collapse;width:193px;height:20px"></td>
+                <td style="border-right:1px dashed black;border-collapse:collapse;width:120px;text-align:center;color:white">Bunch Space
+                </td>
+              </tr>
+            </table>
+            <table style="border-collapse:collapse">
+              <tr>
+                <td style="color:white;width:100px"></td>
+                <td style="border-collapse:collapse;width:183px;height:20px;text-align:right"></td>
+                <td style="border-right:1px dashed black;border-collapse:collapse;width:193px;height:20px"></td>
+                <td style="border-right:1px dashed black;border-collapse:collapse;width:120px;text-align:center;color:white">
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x0000100E"); %> T=uint16 HI=4095 LO=1">
+                </td>
+              </tr>
+            </table>
+          </td>
+        <tr>
+      </table>      
+      <table class="t">
+        <tr>
+          <td class="tt" colspan="6">
+            IBFB Settings
+          </td>
+        </tr>
+        <tr>
+          <td class="tlnb"> 
+            Amplifier Gate
+          </td>
+          <td class="tcnb">
+            <form class="forms">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001000"); %> T=uint32" value="0">Closed
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001000"); %> T=uint32" value="1">Open
+            </form>      
+          </td>
+          <td class="tlnb">Gate Advance</td>
+          <td class="tcnb" >
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001048"); %> T=int32">
+          </td>
+          <td class="tlnb"></td>
+          <td class="tlnb"></td>
+        <tr>
+        <tr>
+          <td class="tlnb">Kicker 1 Amp</td>
+          <td class="tcnb" >
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x0000104C"); %> T=float P=4 HI=1.0 LO=-1.0">
+          </td>
+          <td class="tlnb">Kicker 2 Amp</td>
+          <td class="tcnb" >
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001050"); %> T=float P=4 HI=1.0 LO=-1.0">
+          </td>
+          <td class="tlnb">Kicker 2 Delay</td>
+          <td class="tcnb" >
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001006"); %> T=uint8 LO=0 HI=31">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+<!-- Hidden readout fields used by higher layer to adjust display -->
+<p>
+  <span class="ibfb_no_ext_trg_reg"     name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000257"); %> T=uint8"  style="display:none">0</span>
+  <span class="dac16_device_locked"     name="webmap" title="INP@<% webmapAddr("BP_DAC16HL","0x00000018"); %> T=uint8"     style="display:none"></span>
+</p>
+
+<% include("include/wmfoot.inc"); %> 
+
+<script type="text/javascript">ibfbctrl_init();</script>
+
+</body>
+</html>

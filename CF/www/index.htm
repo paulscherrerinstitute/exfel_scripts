@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+  <% include("include/head.inc"); %>
+  <script type="text/javascript" src="js/webmap.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+</head>
+
+<body>
+<% include("include/logo.inc"); %>
+<% include("include/menumain.inc"); %>
+
+<div id="window_body">
+<table  style="width:50%;border:5px #000 solid; border-collapse:collapse; margin: 0% 25%">
+  <tr>
+    <td colspan="4" style="border:3px #000 solid;background: #eeeeee;text-align:center;">
+      <span><b>M</b>odular <b>B</b>PM <b>U</b>nit (MBU)</span>
+    </td>
+  </tr>
+  <tr>
+    <td style="border:3px #000 solid;background: #cccccc;text-align:left;width:5%"></td>    
+    <td style="border:3px #000 solid;background: #cccccc;text-align:center;width:65%" colspan="2">Front Side</td>    
+    <td style="border:3px #000 solid;background: #cccccc;text-align:center;width:30%">Rear Side</td>    
+  </tr>
+  <tr>
+    <td style="border:3px #000 solid;background: #cccccc;text-align:center;">6</td>
+    <td style="border:3px #000 solid;background: #cccccc;" colspan="2" >
+      <form class="forms" id="form_rffe4" method="get" action="but_rffe.htm">
+        <% include("include/bpm4conf.inc"); %>
+        <input type="submit" class="menu_button" value="RFFE4" title="but_rffe.htm" id="menu_rffe4" style="width:100%;visibility:hidden">
+      </form>
+    </td>
+    <td style="border:3px #000 solid;background: #cccccc;text-align:left;">
+      <form class="forms" id="gpac_sn_form2" method="get" action="dio.htm">
+        <input type="submit" class="menu_button" value="DIO" title="dio.htm" id="menu_dio" style="width:100%;height:100%">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td style="border:3px #000 solid;background: #cccccc;text-align:center;">5</td>
+    <td style="border:3px #000 solid;background: #cccccc;" colspan="2" >
+      <form class="forms" id="form_rffe3" method="get" action="but_rffe.htm">
+        <% include("include/bpm3conf.inc"); %>
+        <input type="submit" class="menu_button" value="RFFE3" title="but_rffe.htm" id="menu_rffe3" style="width:100%;visibility:hidden">
+      </form>
+    </td>
+    <td style="border:3px #000 solid;background: #cccccc;text-align:left;" rowspan="4">
+      <form class="forms" id="form_pwrfan" method="get" action="mbu.htm">
+        <input type="submit" class="menu_button" value="Crate" title="mbu.htm" id="menu_mbu" style="width:100%;visibility:hidden">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td style="border:3px #000 solid;background: #cccccc;text-align:center;">4</td>
+    <td style="border:3px #000 solid;background: #cccccc;"  colspan="2" >
+      <form class="forms" id="form_rffe2" method="get" action="but_rffe.htm">
+        <% include("include/bpm2conf.inc"); %>
+        <input type="submit" class="menu_button" value="RFFE2" title="but_rffe.htm" id="menu_rffe2" style="width:100%;visibility:hidden">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td style="border:3px #000 solid;background: #cccccc;text-align:center;">3</td>
+    <td style="border:3px #000 solid;background: #cccccc;"  colspan="2" >
+      <form class="forms" id="form_rffe1" method="get" action="but_rffe.htm">
+        <% include("include/bpm1conf.inc"); %>
+        <input type="submit" class="menu_button" value="RFFE1" title="but_rffe.htm" id="menu_rffe1" style="width:100%;visibility:hidden">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td style="border:3px #000 solid;background: #cccccc;text-align:center;">2
+    </td>
+    <td  style="border:3px #000 solid;background: #cccccc;"  colspan="2" >
+    </td>
+  </tr>
+  <tr>
+    <td style="border:3px #000 solid;background: #cccccc;text-align:center;">1</td>
+    <td style="border:3px #000 solid" colspan="2">
+      <table style="width:100%"> 
+        <tr>
+          <td colspan="2">
+            <form class="forms" id="form_adc12" method="get" action="adc12fl.htm">
+              <% include("include/bpm2conf.inc"); %>
+              <input type="submit" class="menu_button" value="ADC12" title="adc12fl.htm" id="menu_adc12" style="width:100%;visibility:hidden">
+            </form>
+          </td>
+          <td colspan="2">
+            <form class="forms" id="form_adc34" method="get" action="adc12fl.htm">
+              <% include("include/bpm4conf.inc"); %>
+              <input type="submit" class="menu_button" value="ADC34" title="adc12fl.htm" id="menu_adc34" style="width:100%;visibility:hidden">
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <form class="forms" id="gpac_sn_form8" method="get" action="gpac.htm">
+              <input type="submit" class="menu_button" value="GPAC" title="gpac.htm" id="menu_gpac" style="width:100%">
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td >
+            <form class="forms" id="form_bpm1" method="get" action="but_bpm.htm">
+              <% include("include/bpm1conf.inc"); %>
+              <input type="submit" class="menu_button" value="BPM1" title="but_bpm.htm" id="menu_bpm1" style="width:100%;visibility:hidden">
+            </form>
+          </td>
+          <td >
+            <form class="forms" id="form_bpm2" method="get" action="but_bpm.htm">
+              <% include("include/bpm2conf.inc"); %>
+              <input type="submit" class="menu_button" value="BPM2" title="but_bpm.htm" id="menu_bpm2" style="width:100%;visibility:hidden">
+            </form>
+          </td>
+          <td >
+            <form class="forms" id="form_bpm3" method="get" action="but_bpm.htm">
+              <% include("include/bpm3conf.inc"); %>
+              <input type="submit" class="menu_button" value="BPM3" title="but_bpm.htm" id="menu_bpm3" style="width:100%;visibility:hidden">
+            </form>
+          </td>
+          <td >
+            <form class="forms" id="form_bpm4" method="get" action="but_bpm.htm">
+              <% include("include/bpm4conf.inc"); %>
+              <input type="submit" class="menu_button" value="BPM4" title="but_bpm.htm" id="menu_bpm4" style="width:100%;visibility:hidden">
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td >
+            <form class="forms" id="form_pos1" method="get" action="but_pos.htm">
+              <% include("include/bpm1conf.inc"); %>
+              <input type="submit" class="menu_button" value="Position" title="but_pos.htm" id="menu_pos1" style="width:100%;visibility:hidden">
+            </form>
+          </td>
+          <td >
+            <form class="forms" id="form_pos2" method="get" action="but_pos.htm">
+              <% include("include/bpm2conf.inc"); %>
+              <input type="submit" class="menu_button" value="Position" title="but_pos.htm" id="menu_pos2" style="width:100%;visibility:hidden">
+            </form>
+          </td>
+          <td >
+            <form class="forms" id="form_pos3" method="get" action="but_pos.htm">
+              <% include("include/bpm3conf.inc"); %>
+              <input type="submit" class="menu_button" value="Position" title="but_pos.htm" id="menu_pos3" style="width:100%;visibility:hidden">
+            </form>
+          </td>
+          <td >
+            <form class="forms" id="form_pos4" method="get" action="but_pos.htm">
+              <% include("include/bpm4conf.inc"); %>
+              <input type="submit" class="menu_button" value="Position" title="but_pos.htm" id="menu_pos4" style="width:100%;visibility:hidden">
+            </form>
+          </td> 
+        </tr>
+      </table>
+    </td>
+    <td>
+      <form class="forms" id="form_com" method="get" action="com.htm">
+        <input type="submit" class="menu_button" value="COM" title="com.htm" id="menu_com" style="width:100%;height:100%">
+      </form>
+    </td>
+  </tr>
+</table>	 
+</div>
+
+<!-- Hidden readout fields used by higher layer to adjust display -->
+<p>
+  <span class="sn_gpac"    			name="webmap" title="INP@0x00003804 T=string L=7" style="display:none"></span> 
+  <span class="sn_p0_hs1"       name="webmap" title="INP@0x00003A04 T=string L=7" style="display:none"></span>
+  <span class="sn_p0_hs2"       name="webmap" title="INP@0x00003A24 T=string L=7" style="display:none"></span>
+  <span class="sn_p0_hs3"       name="webmap" title="INP@0x00003A44 T=string L=7" style="display:none"></span>
+  <span class="sn_p0_hs4"       name="webmap" title="INP@0x00003A64 T=string L=7" style="display:none"></span>
+  <span class="sn_p0_hs6"       name="webmap" title="INP@0x00003AA4 T=string L=7" style="display:none"></span>
+  <span class="sn_p0_hs7"       name="webmap" title="INP@0x00003AC4 T=string L=7" style="display:none"></span>
+  <span class="boardid_p0_hs1"  name="webmap" title="INP@0x00003A1A T=uint8"      style="display:none"></span>
+  <span class="boardid_p0_hs2"  name="webmap" title="INP@0x00003A3A T=uint8"      style="display:none"></span>
+  <span class="boardid_p0_hs3"  name="webmap" title="INP@0x00003A5A T=uint8"      style="display:none"></span>
+  <span class="boardid_p0_hs4"  name="webmap" title="INP@0x00003A7A T=uint8"      style="display:none"></span>
+  <span class="boardid_p0_hs6"  name="webmap" title="INP@0x00003ABA T=uint8"      style="display:none"></span>
+  <span class="boardid_p0_hs7"  name="webmap" title="INP@0x00003ADA T=uint8"      style="display:none"></span>
+  <span class="sn_pb12"         name="webmap" title="INP@0x00003864 T=uint32"     style="display:none"></span>
+  <span class="sn_pb1"          name="webmap" title="INP@0x00003870 T=string L=8" style="display:none"></span>
+  <span class="sn_pb2"          name="webmap" title="INP@0x00003878 T=string L=8" style="display:none"></span>
+  <span class="in_mbu"          name="webmap" title="INP@0x00003954 T=uint32"     style="display:none"></span>
+</p>
+
+<% include("include/wmfoot.inc"); %> 
+
+<script type="text/javascript">index_menu_init();</script>
+</body>
+</html>

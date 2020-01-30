@@ -1,0 +1,14 @@
+#  ---   IBFB CTRL WRITE -----
+# Rules:
+#   base_addr is in hex format or mnemonic
+#   offset is in hex format
+#   length is unsigned decimal number in 32-bit words
+#   trg has value 0 or 1 
+#   length is unsigned decimal number in 32-bit words
+# base_addr offset     length trg   # buff_addr - comment
+BPM2_FPGA   0x00000400			1	  0   # 0x0000 - :ROUTER2-RST
+BPM2_FPGA   0x00000404			1	  0   # 0x0004 - :ROUTER2-LOOPBACK
+BPM2_FPGA   0x00000424			1	  0   # 0x0008 - :BPM2-ENABLED
+BPM2_FPGA   0x00038024			1	  0   # 0x000C - :BPM2-SMP-B1-0
+BPM2_FPGA   0x0000043C			1	  0   # 0x0024 - :BPM2-Q-THRESHOLD
+

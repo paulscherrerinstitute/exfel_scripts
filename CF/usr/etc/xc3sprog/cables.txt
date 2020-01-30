@@ -1,0 +1,9 @@
+# Alias       Type  OptString Max_Freq
+# OptString for ftdi:
+# VID:PID:PRODDESC:INTERFACE:DBUS_DATA:DBUS_EN:CBUS_DAT:ACBUS_EN
+# OptString for pp: 
+# OptString for xps:  VID:PID
+# Max_Freq == 0 mean use maximum speed of device
+# Use 1500000 for all cable connected cables and max for all on board cables
+
+pp            pp      0       NULL                                                 

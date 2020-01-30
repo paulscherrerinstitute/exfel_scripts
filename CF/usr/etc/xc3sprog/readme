@@ -1,0 +1,64 @@
+This is xc3sprog modified for GPAC 2.1
+It allows programming of SEU FPGA, PROM for CFG FPGA and PROM for SEU FPGA
+from BIT or MCS file.
+
+The program is located in folder /usr/bin/
+The program configuration is in /etc/xc3sprog/
+The typical location of configuration files is in /mnt/cf/fpga/
+
+!!!!! IMPORTANT !!!!!
+Note 1: The Bit file must be generated using bitgen command with option -g StartUpClk:CClk
+Note 2: The file names on CF card must comply to naming rule 8.3 - up to eight characters name, and up to 3 characters extension
+
+
+This is the list of typical use cases:
+
+############# General commands ####################################
+* Get xc3sprog help
+xc3sprog
+
+* Detect JTAG chain
+xc3sprog -v -c pp
+
+############# SEU FPGA commands ####################################
+
+* Program SEU FPGA from BIT file
+xc3sprog -v -c pp -p 1 /mnt/cf/fpga/seu.bit:w:0:BIT
+
+* Program PROM of SEU FPGA from BIT file
+xc3sprog -v -c pp -p 3 /mnt/cf/fpga/seu.bit:w:0:BIT
+
+* Program PROM of SEU FPGA from MCS file
+xc3sprog -v -c pp -p 3 /mnt/cf/fpga/seu.mcs:w:0:MCS
+
+* Verify PROM of SEU FPGA against BIT file
+xc3sprog -v -c pp -p 3 /mnt/cf/fpga/seu.bit:v:0:BIT
+
+* Verify PROM of SEU FPGA against MCS file
+xc3sprog -v -c pp -p 3 /mnt/cf/fpga/seu.mcs:v:0:MCS
+
+* Readback PROM of SEU FPGA to BIT file
+xc3sprog -v -c pp -p 3 /mnt/cf/fpga/seurb.bit:R:0:BIT
+
+* Readback PROM of SEU FPGA to MCS file
+xc3sprog -v -c pp -p 3 /mnt/cf/fpga/seurb.mcs:R:0:MCS
+
+############# CFG FPGA commands ####################################
+
+* Program PROM of CFG FPGA from BIT file
+xc3sprog -v -c pp -p 2 /mnt/cf/fpga/cfg.bit:w:0:BIT
+
+* Program PROM of CFG FPGA from MCS file
+xc3sprog -v -c pp -p 3 /mnt/cf/fpga/cfg.mcs:w:0:MCS
+
+* Verify PROM of CFG FPGA against BIT file
+xc3sprog -v -c pp -p 3 /mnt/cf/fpga/cfg.bit:v:0:BIT
+
+* Verify PROM of CFG FPGA against MCS file
+xc3sprog -v -c pp -p 3 /mnt/cf/fpga/cfg.mcs:v:0:MCS
+
+* Readback PROM of CFG FPGA to BIT file
+xc3sprog -v -c pp -p 3 /mnt/cf/fpga/cfgrb.bit:R:0:BIT
+
+* Readback PROM of CFG FPGA to MCS file
+xc3sprog -v -c pp -p 3 /mnt/cf/fpga/cfgrb.mcs:R:0:MCS

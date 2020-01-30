@@ -1,0 +1,18 @@
+# --- GPAC SERVICE - READ ---------
+# Address visible from PLB in SYS FPGA
+# 0x80101000 - RFFE1 
+# 0x80102000 - RFFE2 
+# 0x80103000 - RFFE3 
+# 0x80104000 - RFFE4 
+# 0x80A00000 - BUT BPM1/2 common component
+# 0x80A10000 - BUT BPM1 pcores
+# 0x80A20000 - BUT BPM2 pcores
+# 0x80900000 - BUT BPM1 DDR2 base address 
+# 0x80980000 - BUT BPM2 DDR2 base address 
+# 0x80B00000 - BUT BPM1 QDR2 base address 
+# 0x80B80000 - BUT BPM2 QDR2 base address 
+# data length in 32-bit words
+# base_addr	    offset length # buff_addr - comment
+0x80000000  0x00003890	    1	# 0x0000 - TEST1
+0x80000000  0x00003894	    1	# 0x0004 - TEST2
+0x80000000  0x00003898	    1	# 0x0008 - TEST3

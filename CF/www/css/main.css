@@ -1,0 +1,138 @@
+
+body{background-color: #cccccc; margin:3px 0px 0px 0px}
+h1 {font-size: 100%; text-indent: 0px; margin: 0 0; padding: 0px 0px; background: #88CCFF}
+div#div_title {margin: 0 10%; background: #777777}                                            
+table#head_table {margin: 0 10%; background: #88CCFF; width:80%; border-collapse:collapse; border:0px; border-image-width:0 0 0 0}                                            
+table#head_logo   {background: #cccccc; width:100%}                                        
+div#head_title {margin: 0 10%; background: #eeeeee}                                        
+div#head_menu   {margin: 0 10%; background: #bbbbff}                                       
+div#window_body   {margin: 0 10%; background: #cccccc; padding: 0px 0px 0px 0px}                                     
+div#webmap_foot {margin: 0 10%; background: #88CCFF;font-size:small;font-family:Courier;} 
+.menu_button{background-color:#aaaaff;border:1px outset #aaaaff}                           
+
+.cw {
+  background: #cccccc;
+  border-collapse:collapse;
+} 
+
+.cwt {
+  background: #eeeeee;
+  text-align:center;
+  border-collapse:collapse;}
+  
+.cws {
+}
+   
+.t {
+	border:2px solid white;
+  border-collapse:collapse;
+}
+
+.tt {
+  color:white;
+  text-align:center;
+  background: #999999;
+  border-collapse:collapse;
+} 
+
+.tlnb {    /* table label with no border */
+  color:white;
+  text-align:center;
+  background: #cccccc;
+  border-collapse:collapse;
+}
+
+.tlb {    /* table label with bottom border */
+  color:white;
+  text-align:center;
+  background: #cccccc;
+  border-collapse:collapse;
+  border-bottom:1px solid white;
+}
+.tlrb {    /* table label with bottom border */
+  color:white;
+  text-align:center;
+  background: #cccccc;
+  border-collapse:collapse;
+  border-bottom:1px solid white;
+  border-right:1px solid white;
+}
+
+.tlr {  /* table label with right border */
+  color:white;
+  border-right:1px solid white;
+  text-align:center;
+  background: #cccccc;
+  border-collapse:collapse
+}
+
+.tlrb{  /* table label with right and bottom border */
+  color:white;
+  border-right:1px solid white;
+  border-bottom:1px solid white; 
+  text-align:center;
+  background: #cccccc;
+  border-collapse:collapse
+}
+
+.trcnb {
+  color:white;
+  text-align:center;
+  background: #cccccc;
+  border-collapse:collapse
+}
+.tcell {
+  border-right:1px solid white;
+  text-align:center;
+  background: #cccccc;
+  border-collapse:collapse
+}
+
+.tcrb { /* table data cell with right and bottom border */
+  color:black;
+  border-right:1px solid white;
+  border-bottom:1px solid white;
+  text-align:center;
+  background: #cccccc;
+  border-collapse:collapse
+}
+.tcb { /* table data cell with bottom border */
+  color:black;
+  border-bottom:1px solid white;
+  text-align:center;
+  background: #cccccc;
+  border-collapse:collapse
+}
+.tcr { /* table data cell with right border */
+  color:black;
+  border-right:1px solid white;
+  text-align:center;
+  background: #cccccc;
+  border-collapse:collapse
+}
+.tcnb { /* table data cell with no border */
+  color:black;
+  text-align:center;
+  background: #cccccc;
+  border-collapse:collapse
+}
+
+
+.num_input {
+  text-align:right;
+  width:80%
+}
+
+.text_input {
+  text-align:left;
+  width:80%
+}
+
+.inp_radio {
+  color:black;
+}
+
+.debug_1 {
+    display:none;  
+   /* display:inline;  */
+}

@@ -1,0 +1,37 @@
+############################################################
+# Useful commands in Linux
+############################################################
+
+##    MEMORY   #############################################
+cat /proc/meminfo
+free
+top
+
+
+##    Network  #############################################
+cat /proc/net/dev
+netstat
+
+##    DISK     #############################################
+df -h
+du -h
+fdisk /dev/sda
+vgdisplay       - volume group list
+lvdisplay       - logialc volume list
+
+##    Others  #############################################
+catv -etv
+basename        - file name withouth path
+diff            - compare line by line
+dirname         - path without folder 
+dos2unix        - convert end of lines
+hexdump         - hex dump
+pgrep           - ps | grep
+printenv        - 
+pscan           - scan host and check open ports
+rdate           - get and set date/time from a remote host
+reset           - reset the screen
+stat            - display file or filesystem status
+uname           - host, user, version, etc
+uptime          - display time since last boot
+wc              - count words, lines, characters in a file

@@ -1,0 +1,11 @@
+        <input type="text" name="RFFE_ADDR"     value="0x00103000" class="debug_1">
+        <input type="text" name="BPM_ADDR"      value="0x01210000" class="debug_1">
+        <input type="text" name="CFG_RD_ADDR"   value="0x00003A40" class="debug_1">
+        <input type="text" name="CFG_WR_ADDR"   value="0x00003240" class="debug_1">
+        <input type="text" name="CFG_SN_ADDR"   value="0x00003878" class="debug_1">
+        <input type="text" name="ADC_ADDR"      value="0x01200300" class="debug_1">
+        <input type="text" name="BPM_COMM_ADDR" value="0x01200000" class="debug_1">
+        <input type="text" name="QDR_ADDR"      value="0x01300000" class="debug_1">
+        <input type="text" name="DDR_ADDR"      value="0x01100000" class="debug_1">
+        <input type="text" name="BUT_EEPROM"    value="0x01204000" class="debug_1">
+        <input type="text" name="DEVICE"        value="BPM3"       class="debug_1">

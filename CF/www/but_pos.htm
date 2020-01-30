@@ -1,0 +1,336 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+  <% include("include/head.inc"); %>
+  <script type="text/javascript" src="js/chart.js"></script>
+  <script type="text/javascript" src="js/webmap.js"></script>
+  <script type="text/javascript" src="js/but_pos.js"></script>
+</head>
+
+<body>
+<% include("include/logo.inc"); %>
+<% include("include/menubbpm.inc"); %>
+
+<div id="window_body">
+<table class="cw">
+  <tr>
+    <td class="cwt" colspan="2"><% webmapGetParam("DEVICE"); %> Position and Charge
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table class="cw">
+        <tr>
+          <td style="vertical-align:top">
+            <table>
+              <tr>
+                <td style="vertical-align:top">
+                  <table class="t">            
+                    <tr>
+                      <td class="tt" colspan="5">
+                        Position and Charge Statistics
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Bucket</td>
+                      <td class="tcrb" colspan="1">
+                        <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("DDR_ADDR","0x000040B8"); %> T=uint32"> 
+                      </td>
+                      <td class="tlrb" >Pulses</td>
+                      <td class="tcrb" colspan="1">
+                        <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("DDR_ADDR","0x000040AC"); %> T=uint32"> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" style="width:70px"></td>
+                      <td class="tlrb" style="width:80px">
+                        One bunch
+                      </td>
+                      <td class="tlrb" style="width:80px">
+                        Average
+                      </td>
+                      <td class="tlrb" style="width:80px">
+                        Std. Dev.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlr">
+                        X [mm]
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004074"); %> T=float P=4">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004060"); %> T=float P=4">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004064"); %> T=float P=4">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlr">
+                        Y [mm]
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x0000408C"); %> T=float P=4">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004078"); %> T=float P=4">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x0000407C"); %> T=float P=4">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlr">
+                        Q [pc]
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x000040A4"); %> T=float P=1">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004090"); %> T=float P=1">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004094"); %> T=float P=1">
+                      </td>
+                    </tr> 
+                    <tr>
+                      <td class="tlr">
+                        A1
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004014"); %> T=float">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004000"); %> T=float P=1">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004004"); %> T=float P=1">
+                      </td>
+                    </tr> 
+                    <tr>
+                      <td class="tlr">
+                        A2
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x0000402C"); %> T=float">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004018"); %> T=float P=1">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x0000401C"); %> T=float P=1">
+                      </td>
+                    </tr> 
+                    <tr>
+                      <td class="tlr">
+                        A3
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004044"); %> T=float">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004030"); %> T=float P=1">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004034"); %> T=float P=1">
+                      </td>
+                    </tr> 
+                    <tr>
+                      <td class="tlr">
+                        A4
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x0000405C"); %> T=float">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x00004048"); %> T=float P=1">
+                      </td>
+                      <td name="webmap" class="tcell" title="INP@<% webmapAddr("DDR_ADDR","0x0000404C"); %> T=float P=1">
+                      </td>
+                    </tr> 
+                  </table>
+                </td>
+                <td>
+                  <table>
+                    <tr>                      
+                      <td class="trcnb" style="font-size:x-small">
+                        Y<br>[mm]
+                      </td>
+                      <td>
+                        <canvas id="2d_bpm1" width="200" height="200" ></canvas>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                      </td>
+                      <td  class="trcnb" style="font-size:x-small">
+                        X [mm]
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align:top">
+                  <table class="t">            
+                    <tr>
+                      <td class="tt" colspan="3">
+                        Position and Charge Calculation 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb">Detector linearization</td>
+                      <td class="tcb" colspan="2">
+                        <form class="forms">
+                          <input type="radio" name="webmap" title="OUT@<% webmapAddr("BPM_ADDR","0x00000438"); %> T=uint32" value="0">Off
+                          <input type="radio" name="webmap" title="OUT@<% webmapAddr("BPM_ADDR","0x00000438"); %> T=uint32" value="1">On
+                        </form>      
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlr">Pickup orientation</td>
+                      <td class="tcell" colspan="2">
+                        <form class="forms">
+                          <input type="radio" name="webmap" title="OUT@<% webmapAddr("BPM_ADDR","0x00000450"); %> T=uint8" value="0">0 deg
+                          <input type="radio" name="webmap" title="OUT@<% webmapAddr("BPM_ADDR","0x00000450"); %> T=uint8" value="1">45 deg
+                        </form>      
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb">Pickup roll angle</td>
+                      <td class="tcb" colspan="1">
+                        <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x00000428"); %> T=float P=1"> 
+                      </td>
+                      <td class="tlrb">[deg]</td>
+                    </tr>
+                    <tr>
+                      <td class="tlr">Q factor</td>
+                      <td class="tcnb" colspan="1">
+                        <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x0000044C"); %> T=float P=5"> 
+                      </td>
+                      <td class="tlnb"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlr">Q threshold</td>
+                      <td class="tcnb" colspan="1">
+                        <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("DDR_ADDR","0x00001038"); %> T=uint8">
+                      </td>
+                      <td class="tlnb">[%]</td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb">Q threshold</td>
+                      <td name="webmap" class="tcb" title="INP@<% webmapAddr("BPM_ADDR","0x00000430"); %> T=float">
+                      <td class="tlrb">[pC]</td>
+                    </tr>
+                    <tr>
+                      <td class="tlr"></td>
+                      <td class="tlr">X</td>
+                      <td class="tlr">Y</td>
+                    </tr>
+                    <tr>
+                      <td class="tlr">K factor</td>
+                      <td class="tcr" >
+                        <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x00000448"); %> T=float P=1"> 
+                      </td>
+                      <td class="tcr" >
+                        <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x00000434"); %> T=float P=1"> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlr">Offset int</td>
+                      <td class="tcr" >
+                        <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x00000470"); %> T=float P=3"> 
+                      </td>
+                      <td class="tcr" >
+                        <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x00000474"); %> T=float P=3"> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb">Offset ext</td>
+                      <td class="tcrb" >
+                        <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x00000478"); %> T=float P=3"> 
+                      </td>
+                      <td class="tcrb" >
+                        <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x0000047C"); %> T=float P=3"> 
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td>
+                  <table class="t">            
+                    <tr>
+                      <td class="tt" colspan="5">
+                        Error vector
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb"></td>
+                      <td class="tlrb">CH1</td>
+                      <td class="tlrb">CH2</td>
+                      <td class="tlrb">CH3</td>
+                      <td class="tlrb">CH4</td>
+                    </tr>
+                    <tr>
+                      <td class="tlr">Base line error</td>
+                      <td class="tcrb" id="err_bl_1"></td> 
+                      <td class="tcrb" id="err_bl_2"></td>
+                      <td class="tcrb" id="err_bl_3"></td>
+                      <td class="tcrb" id="err_bl_4"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlr">ADC saturation min</td>
+                      <td class="tcrb" id="err_max_1"></td>
+                      <td class="tcrb" id="err_max_2"></td>
+                      <td class="tcrb" id="err_max_3"></td>
+                      <td class="tcrb" id="err_max_4"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlr">ADC saturation max</td>
+                      <td class="tcrb" id="err_min_1"></td>
+                      <td class="tcrb" id="err_min_2"></td>
+                      <td class="tcrb" id="err_min_3"></td>
+                      <td class="tcrb" id="err_min_4"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlr">Amplitude calc error</td>
+                      <td class="tcrb" id="err_amp_1"></td>
+                      <td class="tcrb" id="err_amp_2"></td>
+                      <td class="tcrb" id="err_amp_3"></td>
+                      <td class="tcrb" id="err_amp_4"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>      
+          </td>          
+          <td>
+            <table>
+              <tr>
+                <td class="trcnb">Position X [mm]</td>
+              </tr>
+              <tr>
+                <td>
+                  <canvas class="bpmX" name="webmap" title="INP@<% webmapAddr("DDR_ADDR","0x00004074"); %> T=float P=3 CL=100" width="600" height="200" ></canvas>
+                </td>
+              </tr>
+              <tr>
+                <td class="trcnb" style="text-align:center">Position Y [mm]</td>
+              </tr>
+              <tr>
+                <td>
+                  <canvas class="bpmY" name="webmap" title="INP@<% webmapAddr("DDR_ADDR","0x0000408C"); %> T=float P=3 CL=100" width="600" height="200" ></canvas>
+                </td>          
+              </tr>
+              <tr>
+                <td class="trcnb" style="text-align:center">Charge [pC]</td>
+              </tr>
+              <tr>
+                <td>
+                  <canvas class="bpmQ" name="webmap" title="INP@<% webmapAddr("DDR_ADDR","0x000040A4"); %> T=float P=3 CL=100" width="600" height="200" ></canvas>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+<!-- Hidden readout fields used by higher layer to adjust display -->
+<p>
+  <span class="but_bpm_pll_locked"  name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000203"); %> T=uint8"  style="display:none">0</span>
+  <span class="but_bpm_valid"       name="webmap" title="INP@<% webmapAddr("QDR_ADDR","0x0000C000"); %> T=uint32" style="display:none" >0</span>
+</p>
+
+<% include("include/wmfoot.inc"); %> 
+
+<script type="text/javascript">but_pos_init();</script>
+
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+	<% include("include/head.inc"); %>
+  <script type="text/javascript" src="js/webmap.js"></script>
+  <script type="text/javascript" src="js/gpac.js"></script> 
+</head>
+
+<body>
+<% include("include/logo.inc"); %>
+<% include("include/menugpac.inc"); %>
+
+<div id="window_body">
+
+<table class="cw"> 
+  <tr>
+    <td class="cwt" colspan="3">
+      <span>GPAC 2.1 Service Panel</span>
+      <!-- <span name="webmap" title="INP@0x00003804 T=string L=7"></span>] -->
+    </td>
+  </tr>
+  <tr>
+    <td class="cws" style="vertical-align:top">
+      <table class="t"  id="webmap2">
+        <tr>
+          <td class="tt" colspan="3" id="test_callback">
+            Hardware
+          </td>
+        </tr>
+        <tr>
+          <td class="tlrb" style="width:60px;text-align:right">GPAC</td>
+          <td class="tcrb" name="webmap" title="INP@0x00003804 T=string L=7" class="tcell" style="width:70px"></td>
+          <td class="tcb">
+            <input type="button" class="webmap_button" value="Reset" name="webmap" title="OUT@0x00003000 T=uint32 C=1" style="width:70px">
+          </td>
+        </tr>
+        <tr> 
+          <td class="tlrb" style="width:60px;text-align:right">PB1</td>
+          <td class="tcrb" name="webmap" title="INP@0x00003870 T=string L=8" class="tcell" style="width:70px"></td>
+          <td class="tcb" id="in_pb1"></td>
+        </tr>
+        <tr> 
+          <td class="tlr" style="width:60px;text-align:right">PB2</td>
+          <td class="tcrb" name="webmap" title="INP@0x00003878 T=string L=8" class="tcell" style="width:70px"></td>
+          <td class="tcb" id="in_pb2"></td>
+        </tr>       
+        <tr> 
+          <td class="tlr" style="width:60px;text-align:right">MAC</td>
+          <td class="tcb" id="cfg_mac" colspan="2"></td>
+        </tr>       
+      </table>
+      <table class="t"  id="webmap2">
+        <tr>
+          <td class="tt" colspan="3" >
+            Watchdog
+          </td>
+        </tr>        
+        <tr>
+          <td class="tlr" style="width:60px">Time</td>
+          <td class="tcr" style="width:110px"><span name="webmap" title="INP@0x000038B4 T=uint32 S=0.000016 P=6"></span></td>
+          <td class="tlr" style="width:30px">[ms]</td>
+        </tr>
+      </table>      
+    </td>
+    <td class="cws" style="vertical-align:top"  >
+      <table class="t"  id="webmap1">
+        <tr><td class="tt" colspan="5">
+          Power Consumption
+        </td></tr>
+        <tr>
+          <td class="tlb" style="width:81px;"></td>
+          <td class="tlrb" style="width:79px;">Vin [V]</td>
+          <td class="tlrb" style="width:79px;">Vout [V]</td>
+          <td class="tlrb" style="width:79px;">I [A]</td>
+          <td class="tlrb" style="width:79px;">P [W]</td>   
+        </tr>
+        <tr>
+          <td class="tlr">5V0 CFG</td>
+          <td class="tcr"><span class="pwr_5v0_cfg_vin"  name="webmap" title="INP@0x0000381F T=uint8 S=0.023618 P=2"></span></td>
+          <td class="tcr"><span class="pwr_5v0_cfg_vout" name="webmap" title="INP@0x0000381D T=uint8 S=0.0605   P=2"></span></td>
+          <td class="tcr"><span class="pwr_5v0_cfg_i"    name="webmap" title="INP@0x0000381E T=uint8 S=0.03775  P=2"></span></td>
+          <td class="tcr"><span class="pwr_5v0_cfg_p"></span></td>
+        </tr>
+        <tr>
+          <td class="tlr">3V3</td>
+          <td class="tcr"><span class="pwr_3v3_vin"  name="webmap" title="INP@0x00003823 T=uint8 S=0.015424 P=2"></span></td>
+          <td class="tcr"><span class="pwr_3v3_vout" name="webmap" title="INP@0x00003821 T=uint8 S=0.0605   P=2"></span></td>
+          <td class="tcr"><span class="pwr_3v3_i"    name="webmap" title="INP@0x00003822 T=uint8 S=0.10067  P=2"></span></td>
+          <td class="tcr"><span class="pwr_3v3_p"    ></span></td>
+        </tr>
+        <tr>
+          <td class="tlr">5V0</td>
+          <td class="tcr"><span class="pwr_5v0_vin"  name="webmap" title="INP@0x00003827 T=uint8 S=0.023618 P=2"></span></td>
+          <td class="tcr"><span class="pwr_5v0_vout" name="webmap" title="INP@0x00003825 T=uint8 S=0.0605   P=2"></span></td>
+          <td class="tcr"><span class="pwr_5v0_i"    name="webmap" title="INP@0x00003826 T=uint8 S=0.06040  P=2"></span></td>
+          <td class="tcr"><span class="pwr_5v0_p"    ></span></td>
+        </tr> 
+        <tr>
+          <td class="tlr">3V3 PB</td>
+          <td class="tcr"><span class="pwr_3v3_pb_vin" name="webmap" title="INP@0x0000382B T=uint8 S=0.015424 P=2"></span></td>
+          <td class="tcr"><span class="pwr_3v3_pb_vout" name="webmap" title="INP@0x00003829 T=uint8 S=0.0605   P=2"></span></td>
+          <td class="tcr"><span class="pwr_3v3_pb_i"   name="webmap" title="INP@0x0000382A T=uint8 S=0.06040  P=2"></span></td>
+          <td class="tcr"><span class="pwr_3v3_pb_p"   ></span></td>
+        </tr> 
+        <tr>
+          <td class="tlrb">5V0 PB</td>
+          <td class="tcr" style="border-bottom:1px solid white;"><span class="pwr_5v0_pb_vin" name="webmap" title="INP@0x0000382F T=uint8 S=0.023618 P=2"></span></td>
+          <td class="tcr" style="border-bottom:1px solid white;"><span class="pwr_5v0_pb_vout" name="webmap" title="INP@0x0000382D T=uint8 S=0.0605   P=2"></span></td>
+          <td class="tcr" style="border-bottom:1px solid white;"><span class="pwr_5v0_pb_i"   name="webmap" title="INP@0x0000382E T=uint8 S=0.06040  P=2"></span></td>
+          <td class="tcr" style="border-bottom:1px solid white;"><span class="pwr_5v0_pb_p"   ></span></td>
+        </tr> 
+        <tr>
+          <td class="tlrb" colspan="4" style="text-align:right">Total Power</td>
+          <td class="tcrb"><span class="pwr_total"></span></td>
+        </tr> 
+      </table> 
+    </td>
+    <td class="cws" style="vertical-align:top">
+      <table class="t"  id="webmap1">
+        <tr>
+          <td class="tt" colspan="5">
+            Firmware
+          </td>
+        </tr>
+        <tr>
+          <td class="tlb" colspan="5">
+            <table >
+              <tr>
+                <td class="tlnb">Active revision:</td>        
+                <td class="tcnb" style="width:30px;" name="webmap" title="INP@0x00003884 T=uint32" ></td>
+                <td class="tlnb">Check SYS FPGA:</td>        
+                <td class="tcnb" style="width:30px;" name="webmap" title="INP@0x0000388C T=uint32" ></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="tlrb" style="width:60px;">FPGA</td>
+          <td class="tlrb" style="width:40px;">Conf</td>
+          <td class="tlrb" style="width:100px;">Version</td>
+          <td class="tlrb" style="width:140px;">Firmware</td> 
+          <td class="tlrb" style="width:140px;">Software</td> 
+        </tr>
+        <tr>
+          <td class="tlr"   >CFG</td>
+          <td class="tcr" id="cfg_fpga_cfg"></td> 
+          <td class="tcr" id="cfg_fw_version" ></td> 
+          <td class="tcr" id="cfg_fw_date" ></td>
+          <td class="tcr" id="cfg_sw_date" ></td>
+        </tr>
+        <tr>
+          <td class="tlr"   >SEU</td>
+          <td class="tcr" id="seu_fpga_cfg"></td>
+          <td class="tcr" id="seu_fpga_fw"></td> 
+          <td class="tcr" id="seu_fpga_date"></td>
+        </tr>
+        <tr>
+          <td class="tlr"   >SYS</td>
+          <td class="tcr" id="sys_fpga_cfg"></td>
+          <td class="tcr" id="sys_fw_version"></td> 
+          <td class="tcr" id="sys_fw_date"></td>
+          <td class="tcr" id="sys_sw_date"></td>
+        </tr>
+        <tr>
+          <td class="tlr"   >BP</td>
+          <td class="tcr" id="bp_fpga_cfg"></td> 
+          <td class="tcr" id="bp_fw_version"></td> 
+          <td class="tcr" id="bp_fw_date"></td>
+          <td class="tcr" id="bp_sw_date"></td>
+        </tr>
+        <tr>
+          <td class="tlr"   >BPM1</td>
+          <td class="tcr" id="bpm1_fpga_cfg"></td> 
+          <td class="tcr" id="bpm1_fw_version"></td> 
+          <td class="tcr" id="bpm1_fw_date"></td> 
+          <td class="tcr" id="bpm1_sw_date"></td> 
+        </tr>
+        <tr>
+          <td class="tlrb"   >BPM2</td>
+          <td class="tcrb" id="bpm2_fpga_cfg"></td> 
+          <td class="tcrb" id="bpm2_fw_version"></td> 
+          <td class="tcrb" id="bpm2_fw_date"></td>
+          <td class="tcrb" id="bpm2_sw_date"></td>
+        </tr>
+      </table> 
+    </td>
+
+  </tr>
+  <tr>
+    <td>
+    </td>
+    <td class="cws" style="vertical-align:top">
+      <table class="t"  id="webmap1">
+        <tr><td class="tt" colspan="5">
+          Temperature [degC]
+        </td></tr>
+        <tr>
+          <td class="tlb" style="width:80px;"></td>
+          <td class="tlrb" style="width:80px;">BPM1</td>
+          <td class="tlrb" style="width:80px;border-right:1px solid white">BPM2</td>
+          <td class="tlb" style="width:80px;"></td>
+          <td class="tlrb" style="width:80px;">SYS</td>  
+        </tr>
+        <tr>
+          <td class="tlr">FPGA</td>
+          <td class="tcr" name="webmap" title="INP@0x00003830 T=uint16 S=0.0625 O=-2048 P=1" ></td>
+          <td class="tcr" name="webmap" title="INP@0x0000383A T=uint16 S=0.0625 O=-2048 P=1" ></td>
+          <td class="tlr">FPGA</td>
+          <td class="tcr" name="webmap" title="INP@0x00003844 T=uint16 S=0.0625 O=-2048 P=1" ></td>
+        </tr>
+        <tr>
+          <td class="tlr">DDR2</td>
+          <td class="tcr" name="webmap" title="INP@0x00003832 T=uint16 S=0.0625 O=-2048 P=1" ></td>
+          <td class="tcr" name="webmap" title="INP@0x0000383C T=uint16 S=0.0625 O=-2048 P=1" ></td>
+          <td class="tlr">DDR2(1)</td>
+          <td class="tcr" name="webmap" title="INP@0x00003846 T=uint16 S=0.0625 O=-2048 P=1" ></td>
+        </tr>
+        <tr>
+          <td class="tlr">QDR2</td>
+          <td class="tcr" name="webmap" title="INP@0x00003834 T=uint16 S=0.0625 O=-2048 P=1" ></td>
+          <td class="tcr" name="webmap" title="INP@0x0000383E T=uint16 S=0.0625 O=-2048 P=1" ></td>
+          <td class="tlr">DDR2(2)</td>
+          <td class="tcr" name="webmap" title="INP@0x00003848 T=uint16 S=0.0625 O=-2048 P=1" ></td>
+        </tr>
+        <tr>
+          <td class="tlr">Air</td>
+          <td class="tcr" name="webmap" title="INP@0x00003836 T=uint16 S=0.0625 O=-2048 P=1" ></td>
+          <td class="tcr" name="webmap" title="INP@0x00003840 T=uint16 S=0.0625 O=-2048 P=1" ></td>
+          <td class="tlr"></td>
+          <td class="tcell"></td>
+        </tr>
+        <tr>
+          <td class="tlr">Sensor</td>
+          <td class="tcr" name="webmap" title="INP@0x00003838 T=uint16 S=0.0625 O=-2048 P=1" ></td>
+          <td class="tcr" name="webmap" title="INP@0x00003842 T=uint16 S=0.0625 O=-2048 P=1" ></td>
+          <td class="tlr">Sensor</td>
+          <td class="tcr" name="webmap" title="INP@0x0000384C T=uint16 S=0.0625 O=-2048 P=1" ></td>
+        </tr>
+      </table> 
+      <table class="t"  id="webmap2">
+        <tr>
+          <td class="tt" colspan="3" id="test_callback">
+            Adjustable Oscillators
+          </td>
+        </tr>
+        <tr>
+          <td class="tlrb" style="width:184px"></td>
+          <td class="tlrb" style="width:110px">Osc 0</td>
+          <td class="tlrb" style="width:110px">Osc 1</td>
+        </tr>
+        <tr>
+          <td class="tlrb" >Set Frequency [MHz]</td>
+          <td class="tcrb" name="webmap" title="INP@0x00003894 T=uint32 S=0.000001 P=6"></td>
+          <td class="tcrb" name="webmap" title="INP@0x000038A4 T=uint32 S=0.000001 P=6"></td>
+        </tr>
+        <tr>
+          <td class="tlrb" >Measured Frequency [MHz]</td>
+          <td class="tcrb" name="webmap" title="INP@0x0000006C T=uint32 S=0.000001 P=6"></td>
+          <td class="tcrb" name="webmap" title="INP@0x00000070 T=uint32 S=0.000001 P=6"></td>
+        </tr>
+      </table>
+      
+    </td>
+    <td class="cws" style="vertical-align:top">
+      <table class="t"  id="webmap1">
+        <tr>
+          <td class="tt" colspan="9">
+            External Modules Control
+          </td>
+        </tr>
+        <tr>
+          <td class="tlrb" style="width:40px;">RTM</td>
+          <td class="tlrb" style="width:40px;">MBU</td>
+          <td class="tlrb" style="width:30px;">In</td>
+          <td class="tlrb" style="width:30px;">Err</td> 
+          <td class="tlrb" style="width:30px;">PG</td> 
+          <td class="tlrb" style="width:64px;">Power</td> 
+          <td class="tlrb" style="width:140px;">Type</td> 
+          <td class="tlrb" style="width:80px;">S/N</td> 
+          <td class="tlrb" style="width:60px;">Temp [degC]</td> 
+        </tr>
+        <tr>
+          <td class="tlr" style="width:40px;">A</td>
+          <td class="tlr" style="width:40px;">F3</td>
+          <td class="tcr" id="in_rffe1" ></td>
+          <td class="tcr" id="err_rffe1"></td> 
+          <td class="tcr" id="pg_rffe1" ></td> 
+          <td class="tcr">
+            <input type="button" value="Off" name="webmap" title="OUT@0x00003204 T=uint32 C=1" style="width:30px">
+            <input type="button" value="On"  name="webmap" title="OUT@0x00003200 T=uint32 C=1" style="width:30px">
+          </td> 
+          <td class="tcr" id="txt_type_rffe1"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003A04 T=string L=7"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003A18 T=int16 S=0.0625 P=2"></td> 
+        </tr>
+        <tr>
+          <td class="tlr" style="width:40px;">B</td>
+          <td class="tlr" style="width:40px;">F4</td>
+          <td class="tcr" id="in_rffe2" ></td>
+          <td class="tcr" id="err_rffe2"></td> 
+          <td class="tcr" id="pg_rffe2" ></td> 
+          <td class="tcr">
+            <input type="button" value="Off" name="webmap" title="OUT@0x00003224 T=uint32 C=1" style="width:30px">
+            <input type="button" value="On"  name="webmap" title="OUT@0x00003220 T=uint32 C=1" style="width:30px">
+          </td> 
+          <td class="tcr" id="txt_type_rffe2"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003A24 T=string L=7"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003A38 T=int16 S=0.0625 P=2"></td> 
+        </tr>
+        <tr>
+          <td class="tlr" style="width:40px;">C</td>
+          <td class="tlr" style="width:40px;">F5</td>
+          <td class="tcr" id="in_rffe3"  ></td>
+          <td class="tcr" id="err_rffe3" ></td> 
+          <td class="tcr" id="pg_rffe3"  ></td> 
+          <td class="tcr">
+            <input type="button" value="Off" name="webmap" title="OUT@0x00003244 T=uint32 C=1" style="width:30px">
+            <input type="button" value="On"  name="webmap" title="OUT@0x00003240 T=uint32 C=1" style="width:30px">
+          </td> 
+          <td class="tcr" id="txt_type_rffe3"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003A44 T=string L=7"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003A58 T=int16 S=0.0625 P=2"></td> 
+        </tr>
+        <tr>
+          <td class="tlr" style="width:40px;">D</td>
+          <td class="tlr" style="width:40px;">F6</td>
+          <td class="tcr" id="in_rffe4"  ></td>
+          <td class="tcr" id="err_rffe4" ></td> 
+          <td class="tcr" id="pg_rffe4"  ></td> 
+          <td class="tcr">
+            <input type="button" value="Off" name="webmap" title="OUT@0x00003264 T=uint32 C=1" style="width:30px">
+            <input type="button" value="On"  name="webmap" title="OUT@0x00003260 T=uint32 C=1" style="width:30px">
+          </td> 
+          <td class="tcr" id="txt_type_rffe4"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003A64 T=string L=7"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003A78 T=int16 S=0.0625 P=2"></td> 
+        </tr>
+        <tr>
+          <td class="tlr" style="width:40px;"></td>
+          <td class="tlr" style="width:40px;">R2-5</td>
+          <td class="tcr" id="in_rffe5"  ></td>
+          <td class="tcr" id="err_rffe5" ></td> 
+          <td class="tcr" id="pg_rffe5"  ></td> 
+          <td class="tcr"></td> 
+          <td class="tcr"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003A84 T=string L=7"></td> 
+        </tr>
+        <tr>
+          <td class="tlr" style="width:40px;"></td>
+          <td class="tlr" style="width:40px;">R6</td>
+          <td class="tcr" id="in_rffe6"  ></td>
+          <td class="tcr" id="err_rffe6" ></td> 
+          <td class="tcr" id="pg_rffe6"  ></td> 
+          <td class="tcr">
+            <input type="button" value="Off" name="webmap" title="OUT@0x000032A4 T=uint32 C=1" style="width:30px">
+            <input type="button" value="On"  name="webmap" title="OUT@0x000032A0 T=uint32 C=1" style="width:30px">
+          </td> 
+          <td class="tcr" id="txt_type_rffe6"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003AA4 T=string L=7"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003AB8 T=int16 S=0.0625 P=2"></td> 
+        </tr>
+        <tr>
+          <td class="tlr" style="width:40px;"></td>
+          <td class="tlr" style="width:40px;">R1</td>
+          <td class="tcr" id="in_rffe7"  ></td>
+          <td class="tcr" id="err_rffe7" ></td> 
+          <td class="tcr" id="pg_rffe7"  ></td> 
+          <td class="tcr">
+            <input type="button" value="Off" name="webmap" title="OUT@0x000032C4 T=uint32 C=1" style="width:30px">
+            <input type="button" value="On"  name="webmap" title="OUT@0x000032C0 T=uint32 C=1" style="width:30px">
+          </td> 
+          <td class="tcr" id="txt_type_rffe7"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003AC4 T=string L=7"></td> 
+          <td class="tcr" name="webmap" title="INP@0x00003AD8 T=int16 S=0.0625 P=2"></td> 
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>	
+</div>
+
+<!-- Hidden readout fields used by higher layer to adjust display -->
+<p>
+  <span class="fpga_configure"   name="webmap" title="INP@0x00003810 T=uint32" style="display:none"></span>
+  <span class="cfg_fw_version"   name="webmap" title="INP@0x00003800 T=uint32" style="display:none"></span>
+  <span class="cfg_fw_year"      name="webmap" title="INP@0x00003850 T=uint32" style="display:none"></span>
+  <span class="cfg_fw_month"     name="webmap" title="INP@0x00003854 T=uint32" style="display:none"></span>
+  <span class="cfg_fw_day"       name="webmap" title="INP@0x00003858 T=uint32" style="display:none"></span> 
+  <span class="cfg_fw_hour"      name="webmap" title="INP@0x0000385C T=uint32" style="display:none"></span>
+  <span class="cfg_fw_minute"    name="webmap" title="INP@0x00003860 T=uint32" style="display:none"></span>
+  <span class="cfg_pb_present"   name="webmap" title="INP@0x00003864 T=uint32" style="display:none"></span>
+  <span class="cfg_sw_year"      name="webmap" title="INP@0x00003940 T=uint32" style="display:none"></span>
+  <span class="cfg_sw_month"     name="webmap" title="INP@0x00003944 T=uint32" style="display:none"></span>
+  <span class="cfg_sw_day"       name="webmap" title="INP@0x00003948 T=uint32" style="display:none"></span>
+  <span class="cfg_sw_hour"      name="webmap" title="INP@0x0000394C T=uint32" style="display:none"></span>
+  <span class="cfg_sw_minute"    name="webmap" title="INP@0x00003950 T=uint32" style="display:none"></span>
+  <span class="sys_fw_version"   name="webmap" title="INP@0x00000000 T=uint32" style="display:none"></span>
+  <span class="sys_fw_year"      name="webmap" title="INP@0x00000004 T=uint32" style="display:none"></span>
+  <span class="sys_fw_month"     name="webmap" title="INP@0x00000008 T=uint32" style="display:none"></span>
+  <span class="sys_fw_day"       name="webmap" title="INP@0x0000000C T=uint32" style="display:none"></span>
+  <span class="sys_fw_hour"      name="webmap" title="INP@0x00000010 T=uint32" style="display:none"></span>
+  <span class="sys_fw_minute"    name="webmap" title="INP@0x00000014 T=uint32" style="display:none"></span>
+  <span class="sys_sw_year"      name="webmap" title="INP@0x00000018 T=uint32" style="display:none"></span>
+  <span class="sys_sw_month"     name="webmap" title="INP@0x0000001C T=uint32" style="display:none"></span>
+  <span class="sys_sw_day"       name="webmap" title="INP@0x00000020 T=uint32" style="display:none"></span>
+  <span class="sys_sw_hour"      name="webmap" title="INP@0x00000024 T=uint32" style="display:none"></span>
+  <span class="sys_sw_minute"    name="webmap" title="INP@0x00000028 T=uint32" style="display:none"></span>
+  <span class="bp_fw_version"    name="webmap" title="INP@0x00100000 T=uint32" style="display:none"></span>
+  <span class="bp_fw_year"       name="webmap" title="INP@0x00100004 T=uint32" style="display:none"></span>
+  <span class="bp_fw_month"      name="webmap" title="INP@0x00100008 T=uint32" style="display:none"></span>
+  <span class="bp_fw_day"        name="webmap" title="INP@0x0010000C T=uint32" style="display:none"></span>
+  <span class="bp_fw_hour"       name="webmap" title="INP@0x00100010 T=uint32" style="display:none"></span>
+  <span class="bp_fw_minute"     name="webmap" title="INP@0x00100014 T=uint32" style="display:none"></span>
+  <span class="bp_sw_year"       name="webmap" title="INP@0x00100018 T=uint32" style="display:none"></span>
+  <span class="bp_sw_month"      name="webmap" title="INP@0x0010001C T=uint32" style="display:none"></span>
+  <span class="bp_sw_day"        name="webmap" title="INP@0x00100020 T=uint32" style="display:none"></span>
+  <span class="bp_sw_hour"       name="webmap" title="INP@0x00100024 T=uint32" style="display:none"></span>
+  <span class="bp_sw_minute"     name="webmap" title="INP@0x00100028 T=uint32" style="display:none"></span>
+  <span class="bpm1_fw_version"  name="webmap" title="INP@0x00800000 T=uint32" style="display:none"></span>
+  <span class="bpm1_fw_year"     name="webmap" title="INP@0x00800004 T=uint32" style="display:none"></span>
+  <span class="bpm1_fw_month"    name="webmap" title="INP@0x00800008 T=uint32" style="display:none"></span>
+  <span class="bpm1_fw_day"      name="webmap" title="INP@0x0080000C T=uint32" style="display:none"></span>
+  <span class="bpm1_fw_hour"     name="webmap" title="INP@0x00800010 T=uint32" style="display:none"></span>
+  <span class="bpm1_fw_minute"   name="webmap" title="INP@0x00800014 T=uint32" style="display:none"></span>
+  <span class="bpm1_sw_year"     name="webmap" title="INP@0x00800018 T=uint32" style="display:none"></span>
+  <span class="bpm1_sw_month"    name="webmap" title="INP@0x0080001C T=uint32" style="display:none"></span>
+  <span class="bpm1_sw_day"      name="webmap" title="INP@0x00800020 T=uint32" style="display:none"></span>
+  <span class="bpm1_sw_hour"     name="webmap" title="INP@0x00800024 T=uint32" style="display:none"></span>
+  <span class="bpm1_sw_minute"   name="webmap" title="INP@0x00800028 T=uint32" style="display:none"></span>
+  <span class="bpm2_fw_version"  name="webmap" title="INP@0x01000000 T=uint32" style="display:none"></span>
+  <span class="bpm2_fw_year"     name="webmap" title="INP@0x01000004 T=uint32" style="display:none"></span>
+  <span class="bpm2_fw_month"    name="webmap" title="INP@0x01000008 T=uint32" style="display:none"></span>
+  <span class="bpm2_fw_day"      name="webmap" title="INP@0x0100000C T=uint32" style="display:none"></span>
+  <span class="bpm2_fw_hour"     name="webmap" title="INP@0x01000010 T=uint32" style="display:none"></span>
+  <span class="bpm2_fw_minute"   name="webmap" title="INP@0x01000014 T=uint32" style="display:none"></span>
+  <span class="bpm2_sw_year"     name="webmap" title="INP@0x01000018 T=uint32" style="display:none"></span>
+  <span class="bpm2_sw_month"    name="webmap" title="INP@0x0100001C T=uint32" style="display:none"></span>
+  <span class="bpm2_sw_day"      name="webmap" title="INP@0x01000020 T=uint32" style="display:none"></span>
+  <span class="bpm2_sw_hour"     name="webmap" title="INP@0x01000024 T=uint32" style="display:none"></span>
+  <span class="bpm2_sw_minute"   name="webmap" title="INP@0x01000028 T=uint32" style="display:none"></span>
+  <span class="cfg_mac1"         name="webmap" title="INP@0x00003868 T=uint32" style="display:none"></span>
+  <span class="cfg_mac2"         name="webmap" title="INP@0x0000386C T=uint32" style="display:none"></span>
+  <span class="status_rffe1"     name="webmap" title="INP@0x00003A00 T=uint32" style="display:none"></span>
+  <span class="status_rffe2"     name="webmap" title="INP@0x00003A20 T=uint32" style="display:none"></span>
+  <span class="status_rffe3"     name="webmap" title="INP@0x00003A40 T=uint32" style="display:none"></span>
+  <span class="status_rffe4"     name="webmap" title="INP@0x00003A60 T=uint32" style="display:none"></span>
+  <span class="status_rffe5"     name="webmap" title="INP@0x00003A80 T=uint32" style="display:none"></span>
+  <span class="status_rffe6"     name="webmap" title="INP@0x00003AA0 T=uint32" style="display:none"></span>
+  <span class="status_rffe7"     name="webmap" title="INP@0x00003AC0 T=uint32" style="display:none"></span>
+  <span class="type_rffe1"       name="webmap" title="INP@0x00003A1A T=uint8"  style="display:none"></span>
+  <span class="type_rffe2"       name="webmap" title="INP@0x00003A3A T=uint8"  style="display:none"></span>
+  <span class="type_rffe3"       name="webmap" title="INP@0x00003A5A T=uint8"  style="display:none"></span>
+  <span class="type_rffe4"       name="webmap" title="INP@0x00003A7A T=uint8"  style="display:none"></span>
+  <span class="type_rffe6"       name="webmap" title="INP@0x00003ABA T=uint8"  style="display:none"></span> 
+  <span class="type_rffe7"       name="webmap" title="INP@0x00003ADA T=uint8"  style="display:none"></span>
+</p>
+
+
+<% include("include/wmfoot.inc"); %> 
+
+<p id="webmap_test"></p>
+
+<script type="text/javascript">gpac_init();</script>
+
+</body>
+</html>

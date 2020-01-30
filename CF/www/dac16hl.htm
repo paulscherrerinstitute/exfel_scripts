@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+  <% include("include/head.inc"); %>
+  <script type="text/javascript" src="js/chart.js"></script>
+  <script type="text/javascript" src="js/webmap.js"></script>
+  <script type="text/javascript" src="js/dac16hl.js"></script>
+</head>
+
+<body>
+<% include("include/logo.inc"); %>
+<% include("include/menugpac.inc"); %> 
+
+<div id="window_body">  
+
+<table class="cw"> 
+  <tr>
+    <td class="cwt" colspan="3">
+      <span><% webmapGetParam("PB"); %> [DAC16HL]</span>
+      <!-- <span name="webmap" title="INP@0x00003804 T=string L=7"></span>] -->
+    </td>
+  </tr>
+  <tr>
+    <td class="cws" style="vertical-align:top">
+
+      <table class="t" align="center">
+        <tr>
+          <td class="tt" colspan="2">
+            <span>DAC Configuration</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table class="cw">
+              <tr>
+                <td class="tlrb" style="width:200px"></td>
+                <td class="tlrb" style="width:130px">DAC0</td>
+                <td class="tlrb" style="width:130px">DAC1</td>
+                <td class="tlrb" style="width:130px">DAC2</td>
+                <td class="tlrb" style="width:130px">DAC3</td>
+                <td class="tlb"  style="width:130px">All</td>
+              </tr>
+              <tr>
+                <td class="tlr">Temperature [degC]</td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BP_DAC16HL","0x00003000"); %> T=int32 S=0.00390625 P=1" ></td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BP_DAC16HL","0x00003010"); %> T=int32 S=0.00390625 P=1" ></td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BP_DAC16HL","0x00003020"); %> T=int32 S=0.00390625 P=1" ></td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BP_DAC16HL","0x00003030"); %> T=int32 S=0.00390625 P=1" ></td>
+                <td class="tcnb" ></td>
+              </tr>
+              <tr>
+                <td class="tlr">Comparator N</td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000104"); %> T=uint8" ></td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000105"); %> T=uint8" ></td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000106"); %> T=uint8" ></td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000107"); %> T=uint8" ></td>
+              </tr>
+              <tr>
+                <td class="tlr">Comparator P</td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000108"); %> T=uint8" ></td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000109"); %> T=uint8" ></td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x0000010A"); %> T=uint8" ></td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x0000010B"); %> T=uint8" ></td>
+              </tr>
+              <tr>
+                <td class="tlr">DCM Frequency [MHz]</td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000114"); %> T=int32 S=0.000001 P=6" ></td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000118"); %> T=int32 S=0.000001 P=6" ></td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x0000011C"); %> T=int32 S=0.000001 P=6" ></td>
+                <td class="tcr" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000120"); %> T=int32 S=0.000001 P=6" ></td>
+                <td class="tcnb" ></td>
+              </tr>
+              <tr>
+                <td class="tlr">FPGA DCM Locked</td>
+                <td class="tcr" id="dac16hl_fpga_pll_locked_0" ></td>
+                <td class="tcr" id="dac16hl_fpga_pll_locked_1" ></td>
+                <td class="tcr" id="dac16hl_fpga_pll_locked_2" ></td>
+                <td class="tcr" id="dac16hl_fpga_pll_locked_3" ></td>
+              </tr>
+              <tr>
+                <td class="tlr">Amplifier Enable</td>
+                <td class="tcr" >
+                  <form action="" class="inp_radio">
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000004"); %> T=uint8" value="0">Off
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000004"); %> T=uint8" value="1">On
+                  </form>  
+                </td>
+                <td class="tcr" >
+                  <form action="" class="inp_radio">
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000005"); %> T=uint8" value="0">Off
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000005"); %> T=uint8" value="1">On
+                  </form>  
+                </td>
+                <td class="tcr" >
+                  <form action="" class="inp_radio">
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000006"); %> T=uint8" value="0">Off
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000006"); %> T=uint8" value="1">On
+                  </form>  
+                </td>
+                <td class="tcr" > 
+                  <form action="" class="inp_radio">
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000007"); %> T=uint8" value="0">Off
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000007"); %> T=uint8" value="1">On
+                  </form>  
+                </td>
+                <td class="tcnb" >
+                  <form action="" class="inp_radio">
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000004"); %> T=uint32" value="0">Off
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000004"); %> T=uint32" value="16843009">On
+                  </form>  
+                </td>
+              </tr>
+              <tr>
+                <td class="tlr">DAC Enable</td>
+                <td class="tcr" >
+                  <form action="" class="inp_radio">
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000008"); %> T=uint8" value="0">Off
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000008"); %> T=uint8" value="1">On
+                  </form>  
+                </td>
+                <td class="tcr" >
+                  <form action="" class="inp_radio">
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000009"); %> T=uint8" value="0">Off
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000009"); %> T=uint8" value="1">On
+                  </form>  
+                </td>
+                <td class="tcr" >
+                  <form action="" class="inp_radio">
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x0000000A"); %> T=uint8" value="0">Off
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x0000000A"); %> T=uint8" value="1">On
+                  </form>  
+                </td>
+                <td class="tcr" >
+                  <form action="" class="inp_radio">
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x0000000B"); %> T=uint8" value="0">Off
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x0000000B"); %> T=uint8" value="1">On
+                  </form>  
+                </td>
+                <td class="tcnb" >
+                  <form action="" class="inp_radio">
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000008"); %> T=uint32" value="0">Off
+                    <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000008"); %> T=uint32" value="16843009">On
+                  </form>  
+                </td>
+              </tr>
+              <tr>
+                <td class="tlr">Amplifier CMV [bits]</td>
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00002040"); %> T=int32 S=0.0625 LO=0 HI=4095">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00002044"); %> T=int32 S=0.0625 LO=0 HI=4095">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00002048"); %> T=int32 S=0.0625 LO=0 HI=4095">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x0000204C"); %> T=int32 S=0.0625 LO=0 HI=4095">
+                </td>
+              </tr>
+              <tr>
+                <td class="tlr">Comparator Reference [bits]</td>
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00002050"); %> T=int32 S=0.0625 LO=0 HI=4095">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00002054"); %> T=int32 S=0.0625 LO=0 HI=4095">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00002058"); %> T=int32 S=0.0625 LO=0 HI=4095">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x0000205C"); %> T=int32 S=0.0625 LO=0 HI=4095">
+                </td>
+              </tr>
+              <tr>
+                <td class="tlr">DAC Mode</td>
+                </td>
+                <td class="tcr" >
+                  <select class="dac16hl_mode" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001010"); %> T=uint8"></select>
+                </td>
+                <td class="tcr" >
+                  <select class="dac16hl_mode" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001011"); %> T=uint8"></select>
+                </td>
+                <td class="tcr" >
+                  <select class="dac16hl_mode" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001012"); %> T=uint8"></select>
+                </td>
+                <td class="tcr" >
+                  <select class="dac16hl_mode" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001013"); %> T=uint8"></select>
+                </td>
+                <td class="tcnb" >
+                  <select class="dac16hl_mode_all" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001010"); %> T=uint32"></select>
+                </td>
+              </tr>
+              <tr>
+                <td class="tlr">DAC Amplitude</td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001018"); %> T=float P=5 HI=1 LO=-1">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x0000101C"); %> T=float P=5 HI=1 LO=-1">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001020"); %> T=float P=5 HI=1 LO=-1">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001024"); %> T=float P=5 HI=1 LO=-1">
+                </td>
+              </tr>
+              <tr>
+                <td class="tlr">Wave Frequency [MHz]</td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001028"); %> T=float P=6 HI=10800000 LO=0">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x0000102C"); %> T=float P=6 HI=108 LO=0">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001030"); %> T=float P=6 HI=108 LO=0">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001034"); %> T=float P=6 HI=108 LO=0">
+                </td>
+              </tr>
+              <tr>
+                <td class="tlr">Wave Phase [deg]</td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001038"); %> T=float P=0 HI=360 LO=-360">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x0000103C"); %> T=float P=0 HI=360 LO=-360">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001040"); %> T=float P=0 HI=360 LO=-360">
+                </td>
+                <td class="tcr" >
+                  <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001044"); %> T=float P=0 HI=360 LO=-360">
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>	
+    </td>
+    <td style="vertical-align:top">
+      <table class="t" align="center">
+        <tr>
+          <td class="tt" colspan="2">
+            <span>Clock Configuration</span>  
+          </td> 
+        </tr>
+<!--         <tr> 
+          <td class="tlrb">PLL Configuration</td>
+          <td class="tcb" style="width:130px">
+            <select class="dac16hl_pll_conf" name="webmap" title="OUT@<% webmapAddr("BPM_COMM_ADDR","0x00001014"); %> T=uint32"></select>
+          </td>
+        </tr>
+ -->        
+        <tr>
+          <td class="tlrb">No External Clock</td>
+          <td class="tcb" id="dac16_no_ext_clk_field" style="width:50px"></td>          
+        </tr>
+        <tr>
+          <td class="tlrb">LO PLL2 Locked</td>
+          <td class="tcb" id="dac16_pll2_locked_field" ></td>          
+        </tr>
+        <tr>
+          <td class="tlr">MO PLL1 Locked</td>
+          <td class="tcnb" id="dac16_device_locked_field" ></td>          
+        </tr>
+      </table>
+      <table class="t" align="center">
+        <tr>
+          <td class="tt" colspan="2">
+            <span>Tri-state Configuration</span>  
+          </td> 
+        </tr>
+        <tr>
+          <td class="tcnb" >
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000038"); %> T=uint32" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("BP_DAC16HL","0x00000038"); %> T=uint32" value="1">On
+            </form>  
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</div>
+
+<% include("include/wmfoot.inc"); %> 
+
+<!-- Hidden readout fields used by higher layer to adjust display -->
+<p>
+  <span class="dac16_fpga_pll_locked"   name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x0000010C"); %> T=uint32" style="display:none"></span>
+  <span class="dac16_no_ext_clk"        name="webmap" title="INP@<% webmapAddr("BP_DAC16HL","0x00000010"); %> T=uint8"     style="display:none"></span>
+  <span class="dac16_pll2_locked"       name="webmap" title="INP@<% webmapAddr("BP_DAC16HL","0x0000001C"); %> T=uint8"     style="display:none"></span>
+  <span class="dac16_device_locked"     name="webmap" title="INP@<% webmapAddr("BP_DAC16HL","0x00000018"); %> T=uint8"     style="display:none"></span>
+</p>
+
+<script type="text/javascript">dac16hl_init();</script>
+
+<% include("include/foot.inc"); %> 
+
+</body>
+</html>

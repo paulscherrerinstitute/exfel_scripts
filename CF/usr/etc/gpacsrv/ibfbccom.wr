@@ -1,0 +1,10 @@
+#  ---   IBFB CTRL WRITE -----
+# Rules:
+#   base_addr is in hex format or mnemonic
+#   offset is in hex format
+#   length is unsigned decimal number in 32-bit words
+#   trg has value 0 or 1 
+#   length is unsigned decimal number in 32-bit words
+# base_addr offset     length trg   # buff_addr - comment
+BP_FPGA      0x00000500			1	  1   # 0x0000 - :AMP-LOSS-RST
+

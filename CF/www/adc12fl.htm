@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+  <% include("include/head.inc"); %>
+  <script type="text/javascript" src="js/webmap.js"></script>
+  <script type="text/javascript" src="js/adc12fl.js"></script>
+</head>
+
+<body>
+<% include("include/logo.inc"); %>
+<% include("include/menubbpm.inc"); %>
+
+<div id="window_body">
+<table class="cw">
+  <tr>
+    <td class="cwt" colspan="2">
+      <span>ADC12FL </span>[
+      <span name="webmap" title="INP@<% webmapAddr("CFG_SN_ADDR","0x00000000"); %> T=string L=8"></span>]
+    </td>
+  </tr>
+  <tr>
+    <td style="vertical-align:top">
+      <table class="t">
+        <tr><td class="tt" colspan="6">
+          Temperature
+        </td></tr>
+        <tr>
+          <td class="trc"   style="text-align:center;width:150px">Temp. 0</td>
+          <td class="tcell" style="width:100px" name="webmap" title="INP@<% webmapAddr("ADC_ADDR","0x00000024"); %> T=uint32 S=0.03125 P=2" ></td>
+          <td class="trc"   style="text-align:center;width:50px;border-right:0px">[degC]</td>
+        </tr>
+        <tr>
+          <td class="trc"   style="text-align:center;width:150px">Temp. 1</td>
+          <td class="tcell" name="webmap" title="INP@<% webmapAddr("ADC_ADDR","0x00000028"); %> T=uint32 S=0.03125 P=2" ></td>
+          <td class="trc"   style="text-align:center;width:50px;border-right:0px">[degC]</td>
+        </tr>
+        <tr>
+          <td class="trc"   style="text-align:center;width:150px">Temp. 2</td>
+          <td class="tcell" name="webmap" title="INP@<% webmapAddr("ADC_ADDR","0x0000002C"); %> T=uint32 S=0.03125 P=2" ></td>
+          <td class="trc"   style="text-align:center;width:50px;border-right:0px">[degC]</td>
+        </tr>
+      </table>
+    </td>
+    <td style="vertical-align:top">
+      <table class="t">
+        <tr>
+          <td class="tt" colspan="9">
+            ADC Parameters
+          </td>
+        </tr>
+        <tr>
+          <td class="tlr"></td>
+          <td class="tlrb" colspan="4">BPM 2</td>
+          <td class="tlrb" colspan="4">BPM 1</td>
+        </tr>
+        <tr>
+          <td class="tlr"></td>
+          <td class="tlrb">CH3</td>
+          <td class="tlrb">CH4</td>
+          <td class="tlrb">CH1</td>
+          <td class="tlrb">CH2</td>
+          <td class="tlrb">CH3</td>
+          <td class="tlrb">CH4</td>
+          <td class="tlrb">CH1</td>
+          <td class="tlrb">CH2</td>
+        </tr>
+        <tr>
+          <td class="tlrb"></td>
+          <td class="tlrb">ADC0</td>
+          <td class="tlrb">ADC1</td>
+          <td class="tlrb">ADC2</td>
+          <td class="tlrb">ADC3</td>
+          <td class="tlrb">ADC4</td>
+          <td class="tlrb">ADC5</td>
+          <td class="tlrb">ADC6</td>
+          <td class="tlrb">ADC7</td>
+        </tr>
+        <tr>
+          <td class="tlrb">ADC strobe delay</td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008F0"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008F1"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008F2"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008F3"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008F4"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008F5"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008F6"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008F7"); %> T=uint8" ></td>
+        </tr> 
+        <tr>
+          <td class="tlrb">ADC data delay</td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008F8"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008F9"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008FA"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008FB"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008FC"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008FD"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008FE"); %> T=uint8" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x000008FF"); %> T=uint8" ></td>
+        </tr> 
+        <tr>
+          <td class="tlrb">ADC clock delay</td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x0000082C"); %> T=uint16" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000830"); %> T=uint16" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000834"); %> T=uint16" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000838"); %> T=uint16" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x0000083C"); %> T=uint16" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000840"); %> T=uint16" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000844"); %> T=uint16" ></td>
+          <td class="tcrb" name="webmap" title="INP@<% webmapAddr("BPM_COMM_ADDR","0x00000848"); %> T=uint16" ></td>
+        </tr> 
+      </table>
+    </td>
+  </tr>
+</table>	
+</div>
+
+<% include("include/wmfoot.inc"); %> 
+
+<script type="text/javascript">adc12fl_init();</script>
+
+</body>
+</html>

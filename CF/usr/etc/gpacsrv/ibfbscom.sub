@@ -1,0 +1,9 @@
+#  ---   Button BPM1 Project Address List -----
+# Address visible from PLB in SYS FPGA
+# Rules: 
+#    - address must be in hex format
+#    - max mnemonic size 20 characters
+
+0x80100000  BP_FPGA           
+0x80A00000  BPM1_FPGA          # 0x08000000 in BPM FPGA
+0x81200000  BPM2_FPGA          # 0x08000000 in BPM FPGA

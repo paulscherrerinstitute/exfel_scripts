@@ -1,0 +1,17 @@
+
+
+ACE filename          BPM1 FPGA         BPM2 FPGA
+------------------------------------------------------
+but2                  2xButton          Empty
+but                   2xButton          2xButton
+butcav                2xButton          1xCavity
+butren                2xButton          1xRe-entrant
+cav                   1xCavity          1xCavity
+ren2                  Empty             1xRe-entrant
+ren                   1xRe-entrant      1xRe-entrant
+cav2                  Empty             1xCavity
+-----------IBFB BPMs----------------------------------
+ibfbcav               1xCavity          1xCavity
+ibfbcavb              2xButton          1xCavity
+ibfbcav2              Empty             1xCavity
+golden                Don't care        Don't care

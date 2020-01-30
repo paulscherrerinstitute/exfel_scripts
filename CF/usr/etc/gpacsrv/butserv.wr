@@ -1,0 +1,29 @@
+#  ---   Button BPM Service WRITE -----
+# Rules:
+#   base_addr is in hex format or mnemonic
+#   offset is in hex format
+#   length is unsigned decimal number in 32-bit words
+#   trg has value 0 or 1 
+#   length is unsigned decimal number in 32-bit words
+# base_addr     offset     length trg   # buff_addr - comment
+BUT_BPM         0x00000460			1	  1   # 0x0000 - RFFE-EEPROM-CMD
+DDR2_BPM        0x0001160C			1	  0   # 0x0004 - DET-ITER
+DDR2_BPM        0x00011610			1	  0   # 0x0008 - DET-PULSER-CORR
+BUT_BPM         0x00000458			1	  0   # 0x000C - DET-DATA-IDX
+BUT_BPM         0x00000454			1	  1   # 0x0010 - DET-CHAR
+BUT_BPM         0x00000440			1	  0   # 0x0014 - GAIN-CMD
+BUT_BPM         0x00000444			1	  0   # 0x0018 - GAIN-TAB-IDX
+DDR2_BPM        0x0000102C			1	  0   # 0x001C - GAIN-SEL-ELEM, GAIN-SEL-CH, GAIN-SEL-IDX, GAIN-TAB-IDX
+DDR2_BPM        0x00001030			1	  0   # 0x0020 - GAIN-SEL-VALUE
+BUT_BPM         0x00000464			1	  1   # 0x0024 - BPM-EEPROM-CMD
+DDR2_BPM        0x00000504			1	  0   # 0x0028 - BPM-EEPROM-SELECT-SET
+DDR2_BPM        0x0000050C			8	  0   # 0x002C - BPM-EEPROM-SET-DESC
+BUT_EEPROM      0x00000024			8	  0   # 0x004C - DEV-NAME
+BUT_EEPROM      0x00000044		  1	  0   # 0x006C - BPM-EEPROM-ATTN-LIMIT
+DDR2_BPM        0x00000530			1	  0   # 0x0070 - BPM-EEPROM-MAGIC-WORD
+DDR2_BPM        0x00020024		  1	  0   # 0x0074 - RFFE-EEPROM-ATTN-INP1
+DDR2_BPM        0x00020028		  1	  0   # 0x0078 - RFFE-EEPROM-ATTN-INP2
+DDR2_BPM        0x0002002C		  1	  0   # 0x007C - RFFE-EEPROM-ATTN-INP3
+DDR2_BPM        0x00020030		  1	  0   # 0x0080 - RFFE-EEPROM-ATTN-INP4
+BUT_EEPROM      0x00000048 		  1	  0   # 0x0084 - X2TIM-DEST-BUNCH-MASK
+

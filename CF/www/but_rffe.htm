@@ -1,0 +1,478 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+  <% include("include/head.inc"); %>
+  <script type="text/javascript" src="js/webmap.js"></script>
+  <script type="text/javascript" src="js/but_rffe.js"></script> 
+</head>
+
+<body>
+<% include("include/logo.inc"); %>
+<% include("include/menubbpm.inc"); %>
+
+<div id="window_body">
+
+<table class="cw">
+  <tr>
+    <td class="cwt" colspan="3">
+      <span>Button RFFE [<% webmapGetParam("DEVICE"); %>]</span>
+      <!-- <span name="webmap" title="INP@0x80001804 T=string L=7"></span>] -->
+    </td>
+  </tr>
+  <tr>
+    <td class="cws">
+    </td>
+  </tr>
+  <tr>
+    <td class="cws"> 
+      <table class="t"  id="webmap1">
+        <tr><td class="tt" colspan="6">
+          Power control
+        </td></tr>
+        <tr><td>
+          <input type="button" class="webmap_button" value="On"  name="webmap" title="OUT@<% webmapAddr("CFG_WR_ADDR","0x00000000"); %> T=uint32 C=1"></input>
+          <input type="button" class="webmap_button" value="Off" name="webmap" title="OUT@<% webmapAddr("CFG_WR_ADDR","0x00000004"); %> T=uint32 C=1"></input>
+        </td>
+        <td style="width:40px">PG</td>
+        <td id="pg_indicator" style="width:40px"></td>
+        <td style="width:40px">RN</td>
+        <td id="rn_indicator" style="width:40px"></td>
+        </tr>
+      </table>
+    </td>
+    <td class="cws" style="text-align:left"> 
+      <table class="t"  id="webmap1">
+        <tr><td class="tt" colspan="6" style="width:40px">
+          Status
+        </td></tr>
+        <tr>
+          <td style="width:100px" class="tlnb">Board ID</td>
+          <td style="width:100px" name="webmap" title="INP@<% webmapAddr("CFG_RD_ADDR","0x00000004"); %> T=string L=7" class="tcell"></td>
+          <td style="width:200px" class="tcnb"><span class="ebrffe_status"></span></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="cws" colspan="2">
+      <table class="t"  id="webmap1">
+        <tr><td class="tt" colspan="6">
+          Channel Settings
+        </td></tr>
+        <tr>
+          <td class="tlrb" style="width:240px;"></td>
+          <td class="tlrb" style="width:100px;">Channel 1</td>
+          <td class="tlrb" style="width:100px;">Channel 2</td>
+          <td class="tlrb" style="width:100px;">Channel 3</td>
+          <td class="tlrb" style="width:100px;">Channel 4</td>
+          <td class="tlnb" style="width:200px;">Input Switch</td> 
+        </tr>
+        <tr>
+          <td class="tlr">Attenuation [dB]
+          </td>
+          <td class="tcr">
+            <select class="ebrffe_attn" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000164"); %> T=uint8"></select> 
+          </td>
+          <td class="tcr">
+            <select class="ebrffe_attn" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000165"); %> T=uint8"></select> 
+          </td>
+          <td class="tcr">
+            <select class="ebrffe_attn" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000166"); %> T=uint8"></select> 
+          </td>
+          <td class="tcr">
+            <select class="ebrffe_attn" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000167"); %> T=uint8"></select> 
+          </td>
+          <td class="tlnb" >
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000178"); %> T=uint8" value="0">RF
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000178"); %> T=uint8" value="1">Cal
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td class="tlr">Gain</td>
+          <td class="tcr">
+            <select class="ebrffe_gain" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000015F"); %> T=uint8"></select> 
+          </td>
+          <td class="tcr">
+            <select class="ebrffe_gain" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000015E"); %> T=uint8"></select> 
+          </td>
+          <td class="tcr">
+            <select class="ebrffe_gain" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000015D"); %> T=uint8"></select> 
+          </td>
+          <td class="tcr">
+            <select class="ebrffe_gain" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000015C"); %> T=uint8"></select> 
+          </td>
+          <td class="tlnb">6V Enable
+          </td>
+        </tr>
+        <tr>
+          <td class="tlr">Detector Bias Adj P [V]</td>
+          <td class="tcr">
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000112"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5">
+          </td>
+          <td class="tcr">
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000116"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"> 
+          </td>
+          <td class="tcr">
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000011A"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"> 
+          </td>
+          <td class="tcr">
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000011E"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"> 
+          </td>
+          <td class="tcnb">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000017D"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000017D"); %> T=uint8" value="1">On
+            </form>  
+          </td>
+        </tr>
+        <tr>
+          <td class="tlr">Detector Bias Adj N [V]</td>
+          <td class="tcr">
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000110"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"> 
+          </td>
+          <td class="tcr">
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000114"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"> 
+          </td>
+          <td class="tcr">
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000118"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"> 
+          </td>
+          <td class="tcr">
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000011C"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"> 
+          </td>
+        </tr>
+        <tr>
+          <td class="tlr">Detector Bias Sense P [V]</td>
+          <td name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x00000300"); %> T=int16 S=0.001220703125 O=0.0 P=3" class="tcell"></td>
+          <td name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x00000308"); %> T=int16 S=0.001220703125 O=0.0 P=3" class="tcell"></td>
+          <td name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x00000310"); %> T=int16 S=0.001220703125 O=0.0 P=3" class="tcell"></td>
+          <td name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x00000318"); %> T=int16 S=0.001220703125 O=0.0 P=3" class="tcell"></td>
+        </tr>
+        <tr>
+          <td class="tlr">Detector Bias Sense N [V]</td>
+          <td name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x00000302"); %> T=int16 S=0.001220703125 O=0.0 P=3" class="tcell"></td>
+          <td name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x0000030A"); %> T=int16 S=0.001220703125 O=0.0 P=3" class="tcell"></td>
+          <td name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x00000312"); %> T=int16 S=0.001220703125 O=0.0 P=3" class="tcell"></td>
+          <td name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x0000031A"); %> T=int16 S=0.001220703125 O=0.0 P=3" class="tcell"></td>
+          <td class="tlnb">Amp. Temp. Control</td> 
+        </tr>
+        <tr>
+          <td class="tlr">Amplifier Temperature SP [degC]</td>
+          <td class="tcr">
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00000408"); %> T=float P=1 HI=60 LO=0"></select> 
+          </td>
+          <td class="tcr">
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x0000040C"); %> T=float P=1 HI=60 LO=0"></select> 
+          </td>
+          <td class="tcr">
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00000410"); %> T=float P=1 HI=60 LO=0"></select> 
+          </td>
+          <td class="tcr">
+            <input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00000414"); %> T=float P=1 HI=60 LO=0"></select> 
+          </td>
+          <td class="tcnb">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00000400"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00000400"); %> T=uint8" value="1">On 
+            </form>        
+          </td>
+        </tr>
+        <tr>
+          <td class="tlr">Amplifier Temperature Sense [degC]</td>
+          <td name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x00000304"); %> T=int16 S=0.03912510016 O=-30.77 P=1" class="tcell"></td>
+          <td name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x0000030C"); %> T=int16 S=0.03912510016 O=-30.77 P=1" class="tcell"></td>
+          <td name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x00000314"); %> T=int16 S=0.03912510016 O=-30.77 P=1" class="tcell"></td>
+          <td name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x0000031C"); %> T=int16 S=0.03912510016 O=-30.77 P=1" class="tcell"></td>
+          <td class="tlnb">Detector Temp. Control</td>
+        </tr>
+        <tr>
+          <td class="tlr">Detector Temperature SP [degC]</td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000156"); %> T=uint16 P=1 HI=60 LO=0 O=-30.8 S=0.03818609775641025"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000154"); %> T=uint16 P=1 HI=60 LO=0 O=-30.8 S=0.03818609775641025"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000015A"); %> T=uint16 P=1 HI=60 LO=0 O=-30.8 S=0.03818609775641025"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000158"); %> T=uint16 P=1 HI=60 LO=0 O=-30.8 S=0.03818609775641025"></td>
+          <td class="tcnb">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000017F"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000017F"); %> T=uint8" value="1">On
+            </form>  
+          </td>
+        </tr>
+        <tr>
+          <td class="tlr">Detector Temperature Sense[degC]</td>
+          <td class="tcr" name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x00000306"); %> T=int16 S=0.03912510016 O=-30.77 P=1" ></td>
+          <td class="tcr" name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x0000030E"); %> T=int16 S=0.03912510016 O=-30.77 P=1" ></td>
+          <td class="tcr" name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x00000316"); %> T=int16 S=0.03912510016 O=-30.77 P=1" ></td>
+          <td class="tcr" name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x0000031E"); %> T=int16 S=0.03912510016 O=-30.77 P=1" ></td>
+          <td class="tlnb">Self Discharge</td>
+        </tr>
+        <tr>
+          <td class="tlr">Discharge Bias Adj N [V]</td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000122"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000126"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000012A"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000012E"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"></td>
+          <td class="tcnb">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000017E"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000017E"); %> T=uint8" value="1">On
+            </form>  
+          </td>
+        </tr>
+        <tr>
+          <td class="tlr">Discharge Bias Adj P [V]</td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000120"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000124"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000128"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000012C"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=-5"></td>
+        </tr>
+        <tr>
+          <td class="tlr">Buffer Offset Adjust Common [V]</td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000134"); %> T=int16 S=0.0006104260774020266145769747283604 P=3 HI=5 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000138"); %> T=int16 S=0.0006104260774020266145769747283604 P=3 HI=5 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000013C"); %> T=int16 S=0.0006104260774020266145769747283604 P=3 HI=5 LO=-5"></td>
+          <td class="tcr"></td>
+        </tr>
+        <tr>
+          <td class="tlr">Buffer Offset Adjust Differential [V]</td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000132"); %> T=int16 S=0.001220852154804053229153949456 P=3 HI=5 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000136"); %> T=int16 S=0.001220852154804053229153949456 P=3 HI=5 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000013A"); %> T=int16 S=0.001220852154804053229153949456 P=3 HI=5 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000013E"); %> T=int16 S=0.001220852154804053229153949456 P=3 HI=5 LO=-5"></td>
+          <td class="tcr" style="text-align:right"></td>
+        </tr>
+        <tr>
+          <td class="tlr">Buffer Supply P [V]</td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000142"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=0"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000146"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=0"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000014A"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=0"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000014E"); %> T=int16 S=0.000610426077402026 P=3 HI=5 LO=0"></td>
+          <td>
+          </td>      
+        </tr>
+        <tr>
+          <td class="tlr">Buffer Supply N [V]</td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000140"); %> T=int16 S=0.000610426077402026 P=3 HI=0 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000144"); %> T=int16 S=0.000610426077402026 P=3 HI=0 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000148"); %> T=int16 S=0.000610426077402026 P=3 HI=0 LO=-5"></td>
+          <td class="tcr"><input type="text" class="num_input" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000014C"); %> T=int16 S=0.000610426077402026 P=3 HI=0 LO=-5"></td>
+          <td class="tlnb">Switched Mode Clock</td>
+        </tr>
+        <tr>
+          <td class="tlr">Switched Mode Regulator Enable</td>
+          <td class="tcr">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000170"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000170"); %> T=uint8" value="1">On
+            </form>  
+          </td>
+          <td class="tcr">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000171"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000171"); %> T=uint8" value="1">On
+            </form>  
+          </td>
+          <td class="tcr">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000172"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000172"); %> T=uint8" value="1">On
+            </form>  
+          </td>
+          <td class="tcr">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000173"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000173"); %> T=uint8" value="1">On
+            </form>  
+          </td>
+          <td class="tcnb">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000162"); %> T=uint16" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000162"); %> T=uint16" value="1">On 
+            </form>  
+          </td>
+        </tr>    
+        <tr>
+          <td class="tlr">5V Linear Regulator Enable</td>
+          <td class="tcr">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000174"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000174"); %> T=uint8" value="1">On
+            </form>  
+          </td>
+          <td class="tcr">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000175"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000175"); %> T=uint8" value="1">On
+            </form>  
+          </td>
+          <td class="tcr">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000176"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000176"); %> T=uint8" value="1">On
+            </form>  
+          </td>
+          <td class="tcr">
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000177"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x00000177"); %> T=uint8" value="1">On
+            </form>  
+          </td>
+          <td>
+            <form action="" class="inp_radio">
+              <label style="color:white">Hi Voltage</label>
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000017C"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("RFFE_ADDR","0x0000017C"); %> T=uint8" value="1">On
+            </form>  
+          </td>
+        </tr>    
+      </table> 
+    </td>
+    <td class="cws" style="vertical-align:top"> 
+      <table class="t"  id="webmap1">
+        <tr>
+          <td class="tt" colspan="2" style="width:40px">
+            AGC
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00001000"); %> T=uint8" value="0">Manual
+          </td>
+          <td>
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00001000"); %> T=uint8" value="1">Auto 
+            </form>  
+          </td>
+        </tr>
+				<tr>
+          <td class="tlnb" colspan="2" style="width:40px">
+            Auto Mode
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x0000100A"); %> T=uint8" value="0">Amplitude
+          </td>
+          <td>
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x0000100A"); %> T=uint8" value="1">Limits
+            </form>  
+          </td>
+        </tr>
+        <tr>
+          <td class="tlnb">Amax [%]
+          </td>
+          <td>
+            <input type="text" class="num_input" style="width:50px" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00001001"); %> T=uint8 HI=100 LO=0">
+          </td>
+        </tr>
+        <tr>
+          <td class="tlnb">Ameas [%]
+          </td>
+          <td class="tcr" name="webmap" title="INP@<% webmapAddr("DDR_ADDR","0x00001005"); %> T=uint8 LO=0 HI=100" ></td>
+        </tr>
+        <tr>
+          <td class="tlnb">Amin [%]
+          </td>
+          <td>
+            <input type="text" class="num_input" style="width:50px" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00001002"); %> T=uint8 HI=100 LO=0">
+          </td>
+        </tr>
+        <tr>
+          <td class="tlnb">Amin(time)
+          </td>
+          <td>
+            <input type="text" class="num_input" style="width:50px" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00001003"); %> T=uint8 HI=100 LO=0">
+          </td>
+        </tr>
+        <tr>
+          <td class="tlnb">Bucket start
+          </td>
+          <td>
+            <input type="text" class="num_input" style="width:50px" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x0000100C"); %> T=uint16 HI=2699 LO=0">
+          </td>
+        </tr>
+        <tr>
+          <td class="tlnb">Bucket end
+          </td>
+          <td>
+            <input type="text" class="num_input" style="width:50px" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x0000100E"); %> T=uint16 HI=2699 LO=0">
+          </td>
+        </tr>
+        <tr>
+          <td class="tlnb">Max charge [pC]
+          </td>
+          <td>
+            <input type="text" class="num_input" style="width:50px" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00001014"); %> T=float HI=3000 LO=1">
+          </td>
+        </tr>
+        <tr>
+          <td class="tlnb">Max pos [mm]
+          </td>
+          <td>
+            <input type="text" class="num_input" style="width:50px" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00001018"); %> T=float HI=4 LO=0 P=1">
+          </td>
+        </tr>
+        <tr>
+          <td class="tlnb">Allow charge [pC]
+          </td>
+          <td class="tcr" name="webmap" title="INP@<% webmapAddr("DDR_ADDR","0x00001010"); %> T=float LO=0 HI=3000" ></td>
+        </tr>
+      </table>
+      <table class="t"  id="webmap1">
+        <tr>
+          <td class="tt" colspan="2" style="width:40px">
+            Base Line
+          </td>
+        </tr>
+        <tr>
+          <td style="width:120px" class="tlnb">Enable
+          </td>
+          <td>
+            <form action="" class="inp_radio">
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00000306"); %> T=uint8" value="0">Off
+              <input type="radio" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00000306"); %> T=uint8" value="1">On 
+            </form>        
+          </td>
+        </tr>
+        <tr>
+          <td style="width:100px" class="tlnb">Level
+          </td>
+          <td>
+            <input type="text" class="num_input" style="width:50px" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00000300"); %> T=int16 HI=2047 LO=-2048">
+          </td>
+        </tr>
+        <tr>
+          <td style="width:100px" class="tlnb">Threshold
+          </td>
+          <td>
+            <input type="text" class="num_input" style="width:50px" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00000302"); %> T=int16 HI=2047 LO=0">
+          </td>
+        </tr>
+        <tr>
+          <td style="width:100px" class="tlnb">Time
+          </td>
+          <td>
+            <input type="text" class="num_input" style="width:50px" name="webmap" title="OUT@<% webmapAddr("DDR_ADDR","0x00000307"); %> T=uint8 HI=2047 LO=0">
+          </td>
+        </tr>        
+      </table>
+    </td>
+  </tr>
+</table>	
+</div>
+
+<!-- Hidden readout fields used by higher layer to adjust display -->
+<p>
+  <span class="ebrffe_status_read"  name="webmap" title="INP@<% webmapAddr("RFFE_ADDR","0x00000220"); %> T=uint32"  style="display:none">0</span>
+  <span class="ebrffe_pwr_read"     name="webmap" title="INP@<% webmapAddr("CFG_RD_ADDR","0x00000000"); %> T=uint32" style="display:none">0</span>
+</p>
+
+<% include("include/wmfoot.inc"); %> 
+
+<script type="text/javascript">but_rffe_init();</script>
+
+</body>
+</html>

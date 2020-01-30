@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+  <% include("include/head.inc"); %> 
+  <script type="text/javascript" src="js/chart.js"></script>
+  <script type="text/javascript" src="js/webmap.js"></script>
+  <script type="text/javascript" src="js/but_det.js"></script>
+</head>
+
+<body>
+<% include("include/logo.inc"); %>
+<% include("include/menubbpm.inc"); %>
+
+<div id="window_body">
+
+<table class="t">
+  <tr>
+    <td class="cwt" colspan="4"><% webmapGetParam("DEVICE"); %> RFFE Detector Characterization
+    </td>
+  </tr>
+  <tr>
+    <td class="tlb" colspan="1">
+      <table >
+        <tr>
+          <td>
+            <input type="button" alt="1" class="webmap_button" value="Scan" name="webmap" title="OUT@<% webmapAddr("BPM_ADDR","0x00000420"); %> T=uint32 C=1" >
+          </td>      
+          <td>
+            <input type="button" alt="2" class="webmap_button" value="Stop" name="webmap" title="OUT@<% webmapAddr("BPM_ADDR","0x00000420"); %> T=uint32 C=1" >
+          </td>
+          <td>
+            <input type="button" alt="4" class="webmap_button" value="Fit" name="webmap" title="OUT@<% webmapAddr("BPM_ADDR","0x00000420"); %> T=uint32 C=1" >
+          </td>
+          <td>
+            <input type="button" alt="5" class="webmap_button" value="Set default" name="webmap" title="OUT@<% webmapAddr("BPM_ADDR","0x00000420"); %> T=uint32 C=1" >
+          </td>
+          <td>
+            <input type="button" alt="6" class="webmap_button" value="Save params" name="webmap" title="OUT@<% webmapAddr("BPM_ADDR","0x00000420"); %> T=uint32 C=1" >
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td colspan="3" class="tlb">
+      <table>
+        <tr>
+          <td>
+          </td>
+          <td class="tlnb">
+            Status
+          </td>
+          <td class="tcnb"
+              name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004D0"); %> T=int32">
+          </td>
+          <td class="tlnb">
+            Points/Attn Step
+          </td>
+          <td class="tcnb">
+            <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x00000468"); %> T=int32 HI=128 LO=1">
+          </td>
+          <td class="tlnb">
+            Pulser correction
+          </td>
+          <td class="tcnb">
+            <input type="text" class="num_input" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x0000046C"); %> T=float HI=3.0 LO=0.1"> 
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="tlrb" style="text-align:center;color:white">Channel 1</td>
+    <td class="tlrb" style="text-align:center;color:white">Channel 2</td>
+    <td class="tlrb" style="text-align:center;color:white">Channel 3</td>
+    <td class="tlrb" style="text-align:center;color:white">Channel 4</td>
+  </tr>
+  <tr>
+    <td class="tlrb">
+      <table>
+        <tr>
+          <td class="tlnb">a1:</td>
+          <td class="tcnb" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004A0"); %> T=float P=3"></td>
+          <td class="tlnb">b1:</td>
+          <td class="tcnb" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004A4"); %> T=float P=3"></td>
+          <td class="tlnb">c1:</td>
+          <td class="tcnb" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004A8"); %> T=float P=3"></td>
+        </tr>
+        <tr>
+          <td class="tlnb">e1:</td>
+          <td class="tcnb" colspan="3" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004E0"); %> T=float P=10"></td>
+          <td class="tlnb">found:</td>
+          <td class="tcnb" colspan="1" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004E4"); %> T=uint32"></td>
+        </tr>
+      </table>
+    </td>
+    <td class="tlrb">
+      <table>
+        <tr>
+          <td class="tlnb">a2:</td>
+          <td class="tcnb" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004AC"); %> T=float P=3"></td>
+          <td class="tlnb">b2:</td>
+          <td class="tcnb" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004B0"); %> T=float P=3"></td>
+          <td class="tlnb">c2:</td>
+          <td class="tcnb" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004B4"); %> T=float P=3"></td>
+        </tr>
+        <tr>
+          <td class="tlnb">e2:</td>
+          <td class="tcnb" colspan="3" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004E8"); %> T=float P=10"></td>
+          <td class="tlnb">found:</td>
+          <td class="tcnb" colspan="1" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004EC"); %> T=uint32"></td>
+        </tr>
+      </table>
+    </td>
+    <td class="tlrb">
+      <table>
+        <tr>
+          <td class="tlnb">a3:</td>
+          <td class="tcnb" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004B8"); %> T=float P=3"></td>
+          <td class="tlnb">b3:</td>
+          <td class="tcnb" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004BC"); %> T=float P=3"></td>
+          <td class="tlnb">c3:</td>
+          <td class="tcnb" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004C0"); %> T=float P=3"></td>
+        </tr>
+        <tr>
+          <td class="tlnb">e3:</td>
+          <td class="tcnb" colspan="3" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004F0"); %> T=float P=10"></td>
+          <td class="tlnb">found:</td>
+          <td class="tcnb" colspan="1" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004F4"); %> T=uint32"></td>
+        </tr>
+      </table>
+    </td>
+    <td class="tlrb">
+      <table>
+        <tr>
+          <td class="tlnb">a4:</td>
+          <td class="tcnb" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004C4"); %> T=float P=3"></td>
+          <td class="tlnb">b4:</td>
+          <td class="tcnb" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004C8"); %> T=float P=3"></td>
+          <td class="tlnb">c4:</td>
+          <td class="tcnb" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004CC"); %> T=float P=3"></td>
+        </tr>
+        <tr>
+          <td class="tlnb">e4:</td>
+          <td class="tcnb" colspan="3" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004F8"); %> T=float P=10"></td>
+          <td class="tlnb">found:</td>
+          <td class="tcnb" colspan="1" name="webmap" style="width:60px" title="OUT@<% webmapAddr("BPM_ADDR","0x000004FC"); %> T=uint32"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="1"  class="tlr">
+      <!-- <canvas name="webmap"  title="WAV@<% webmapAddr("DDR_ADDR","0x00080000"); %>:<% webmapAddr("DDR_ADDR","0x00080400"); %>:<% webmapAddr("DDR_ADDR","0x00080C00"); %> T=float L=64 CL=64" width="300" height="200" ></canvas>  -->
+      <canvas id="ch1" width="300" height="200" ></canvas>
+    </td>
+    <td colspan="1" class="tlr">
+      <canvas id="ch2" width="300" height="200" ></canvas>
+    </td>
+    <td colspan="1" class="tlr">
+      <canvas id="ch3" width="300" height="200" ></canvas>
+    </td>
+    <td colspan="1" class="tlr">
+      <canvas id="ch4" width="300" height="200" ></canvas>
+    </td>
+  </tr>
+</table>	
+
+</div>
+
+<!-- Hidden readout fields used by higher layer to adjust display -->
+<p>
+<span class="rd_vin"       name="webmap" title="WAV@<% webmapAddr("DDR_ADDR","0x00081000"); %> T=float L=64" style="display:none"></span>
+<span class="rd_meas_ch1"  name="webmap" title="WAV@<% webmapAddr("DDR_ADDR","0x00080000"); %> T=float L=64" style="display:none"></span>
+<span class="rd_meas_ch2"  name="webmap" title="WAV@<% webmapAddr("DDR_ADDR","0x00080100"); %> T=float L=64" style="display:none"></span>
+<span class="rd_meas_ch3"  name="webmap" title="WAV@<% webmapAddr("DDR_ADDR","0x00080200"); %> T=float L=64" style="display:none"></span>
+<span class="rd_meas_ch4"  name="webmap" title="WAV@<% webmapAddr("DDR_ADDR","0x00080300"); %> T=float L=64" style="display:none"></span>
+<span class="rd_ref_ch1"   name="webmap" title="WAV@<% webmapAddr("DDR_ADDR","0x00080400"); %> T=float L=64" style="display:none"></span>
+<span class="rd_ref_ch2"   name="webmap" title="WAV@<% webmapAddr("DDR_ADDR","0x00080500"); %> T=float L=64" style="display:none"></span>
+<span class="rd_ref_ch3"   name="webmap" title="WAV@<% webmapAddr("DDR_ADDR","0x00080600"); %> T=float L=64" style="display:none"></span>
+<span class="rd_ref_ch4"   name="webmap" title="WAV@<% webmapAddr("DDR_ADDR","0x00080700"); %> T=float L=64" style="display:none"></span>
+</p>
+
+<% include("include/wmfoot.inc"); %> 
+
+<script type="text/javascript">but_det_init();</script>
+
+</body>
+</html>
+

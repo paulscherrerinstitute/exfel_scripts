@@ -1,0 +1,2 @@
+MMC2_SW.bin = version 5.25
+MMC2_FW.dat = version fw 103, bl 1.13, iap 1.10

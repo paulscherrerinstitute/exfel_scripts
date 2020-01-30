@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+  <title> PSI GPAC 2.1 WebServer</title>
+  <link type="text/css" rel="stylesheet" href="css/main.css" />
+  <script type="text/javascript" src="js/chart.js"></script>
+  <script type="text/javascript" src="js/webmap.js"></script>
+  <script type="text/javascript" src="js/overview.js"></script>
+</head>
+
+<body>
+<div id="div_title">
+<table id="head_logo" style="border-width:3px;border-color:#777">
+<tr><td>
+<img src="images/logo.png" style="padding-left:20px"></img>
+</td><td>
+<img src="images/diag.gif" align="right"></img>
+</td></tr>
+</table>
+</div>
+<div id="head_title">
+<h1 align="center">FLUTE BPM WebServer</h1>
+</div>
+<div id="head_menu">
+  <form class="forms" id="gpac_sn_form8" method="get" action="index.html">
+    <input type="submit" class="menu_button" value="MAIN" title="gpac.htm" id="menu_gpac" style="width:60px"></input>
+  </form>
+</div>
+
+<div id="window_body">
+<table class="cw">
+  <tr>
+    <td colspan="2">
+      <table class="cw">
+        <tr>
+          <td  colspan="6">
+            <img src="images/flute.gif" style="padding-left:20px"></img>
+          </td>
+        </tr>              
+        <tr>
+          <td style="width:200px">
+            <form class="forms" id="gpac_sn_form9" method="get" action="but_pos.htm">
+              <input type="text" name="DDR_ADDR" value="0x00800000" class="debug_1">
+              <input type="text" name="BPM_COMM_ADDR" value="0x00A00000" class="debug_1">
+              <input type="text" name="BPM_ADDR" value="0x00A10000" class="debug_1">
+              <input type="text" name="DEVICE"   value="BPM1"       class="debug_1">
+              <input type="submit" class="menu_button" value="BPM1" title="but_pos.htm" id="menu_pos1" style="width:100%">
+            </form>
+          </td>
+          <td style="width:280px">
+          </td>
+          <td class="trcnb" style="width:200px">
+            <form class="forms" id="gpac_sn_form9" method="get" action="but_pos.htm">
+              <input type="text" name="DDR_ADDR" value="0x00800000" class="debug_1">
+              <input type="text" name="BPM_COMM_ADDR" value="0x00A00000" class="debug_1">
+              <input type="text" name="BPM_ADDR" value="0x00A10000" class="debug_1">
+              <input type="text" name="DEVICE"   value="BPM1"       class="debug_1">
+              <input type="submit" class="menu_button" value="BPM3" title="but_pos.htm" id="menu_pos1" style="width:100%">
+            </form>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <canvas id="2d_bpm1" width="200" height="200" ></canvas>
+          </td>
+          <td>            
+          </td>
+          <td>
+            <!-- <canvas class="bpmX" name="webmap" title="INP@<% webmapAddr("BPM1_ADDR","0x00000000"); %> T=float P=3 CL=100" width="600" height="200" ></canvas> -->
+            <canvas id="2d_bpm3" width="200" height="200" ></canvas>
+          </td>
+        </tr>       
+        <tr>
+          <td>
+            <table class="t">            
+              <tr>
+                <td class="trc" style="width:100px">
+                  X [mm]
+                </td>
+                <td class="tcell" style="width:100px"><span class="bpm1X" name="webmap" title="INP@<% webmapAddr("BPM1_ADDR","0x00000000"); %> T=float P=4"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="trc">
+                  Y [mm]
+                </td>
+                <td class="tcell" ><span class="bpm1Y" name="webmap" title="INP@<% webmapAddr("BPM1_ADDR","0x00004000"); %> T=float P=4"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="trc">
+                  Q [pc]
+                </td>
+                <td name="webmap" class="tcell" title="INP@<% webmapAddr("BPM1_ADDR","0x00008000"); %> T=float">
+                </td>
+              </tr>              
+            </table>          
+          </td>
+          <td></td>
+          <td>
+            <table class="t">            
+              <tr>
+                <td class="trc" style="width:100px">
+                  X [mm]
+                </td>
+                <td class="tcell" style="width:100px"><span class="bpm1X" name="webmap" title="INP@<% webmapAddr("BPM1_ADDR","0x00000000"); %> T=float P=4"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="trc">
+                  Y [mm]
+                </td>
+                <td class="tcell" ><span class="bpm1Y" name="webmap" title="INP@<% webmapAddr("BPM1_ADDR","0x00004000"); %> T=float P=4"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="trc">
+                  Q [pc]
+                </td>
+                <td name="webmap" class="tcell" title="INP@<% webmapAddr("BPM1_ADDR","0x00008000"); %> T=float">
+                </td>
+              </tr>              
+            </table>          
+          </td>
+        </tr>
+      </table>	
+    </td>
+  </tr>
+</table>
+
+</div>
+
+<!-- Hidden readout fields used by higher layer to adjust display -->
+<!-- Optional foot section for the WebMAP driver functionality - BEGIN-->
+<div id="webmap_foot">
+	<p id="webmap_info"> 
+		<span id="webmap_version"></span>
+		<span id="webmap_message" style="color:green"></span>
+		<span id="webmap_error" style="color:red"></span>
+	</p>
+</div>
+<!-- Optional foot section for the WebMAP driver functionality - END-->
+
+<p id="webmap_test"></p>
+
+
+<script type="text/javascript">overview_init();</script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+########################################################
+# Put here GPAC Linux global enviromental variables    #
+########################################################
+export LD_LIBRARY_PATH=/usr/local/lib
+alias ll='ls -l --color=auto'
+export PS1="\h# "

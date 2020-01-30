@@ -1,0 +1,666 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+	<% include("include/head.inc"); %>
+  <script type="text/javascript" src="js/webmap.js"></script>
+  <script type="text/javascript" src="js/rtmg.js"></script> 
+</head>
+
+<body>
+<% include("include/logo.inc"); %>
+<% include("include/menubrd.inc"); %>
+
+<div id="window_body">
+<table>
+  <tr>
+    <td style="vertical-align:top">
+      <table class="cw"> 
+        <tr>
+          <td class="cwt" colspan="3">
+            <span>GPAC VME RTM</span>
+            <!-- <span name="webmap" title="INP@0x00003804 T=string L=7"></span>] -->
+          </td>
+        </tr>
+        <tr>
+          <td class="cws" style="vertical-align:top">
+            <table>
+              <tr>
+                <td style="vertical-align:top">
+                  <table class="t"  id="webmap2">
+                    <tr>
+                      <td class="tt" colspan="3" id="test_callback">
+                        Hardware
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" style="width:40px">S/N</td>
+                      <td class="tcb"  style="width:100px" id="rtmg_sn"></td>
+                    </tr>
+                  </table>
+                </td>
+                <td style="vertical-align:top">
+                  <table class="t"  id="webmap2">
+                    <tr>
+                      <td class="tt" colspan="5" id="test_callback">
+                        HS7 Controllers
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" style="width:50px"></td>
+                      <td class="tlrb" style="width:50px">Status</td>
+                      <td class="tlrb" style="width:50px">Fault</td>
+                      <td class="tlrb" style="width:80px">I [A]</td>
+                      <td class="tlrb" style="width:80px">Uout [V]</td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb">3V3</td>
+                      <td class="tcrb" name="webmap" title="INP@0x00003ACC T=uint8"></td>
+                      <td class="tcrb" name="webmap" title="INP@0x00003ACD T=uint8"></td>
+                      <td class="tcrb" name="webmap" title="INP@0x00003ACE T=uint8 S=0.0025 P=3"></td>
+                      <td class="tcb"  name="webmap" title="INP@0x00003ACF T=uint8 S=0.125 P=2"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb">5V0</td>
+                      <td class="tcrb" name="webmap" title="INP@0x00003AD0 T=uint8"></td>
+                      <td class="tcrb" name="webmap" title="INP@0x00003AD1 T=uint8"></td>
+                      <td class="tcrb" name="webmap" title="INP@0x00003AD2 T=uint8 S=0.0025 P=3"></td>
+                      <td class="tcb"  name="webmap" title="INP@0x00003AD3 T=uint8 S=0.125 P=2"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <table class="t"  id="amp_ctrl">
+                    <tr>
+                      <td class="tt" colspan="9" id="test_callback">
+                        IBFB Power Amplifiers Control
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb"  colspan="1"></td>
+                      <td class="tlb"  colspan="3">IP version</td>
+                      <td class="tcrb"  name="webmap" title="INP@0x00100502 T=uint16"></td>
+                      <td class="tlb" colspan="3">Ports</td>
+                      <td class="tcrb" name="webmap" title="INP@0x00100500 T=uint8 S=0.0625"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" style="width:140px">Port</td>
+                      <td class="tlrb" style="width:40px">1</td>
+                      <td class="tlrb" style="width:40px">2</td>
+                      <td class="tlrb" style="width:40px">3</td>
+                      <td class="tlrb" style="width:40px">4</td>
+                      <td class="tlrb" style="width:40px">5</td>
+                      <td class="tlrb" style="width:40px">6</td>
+                      <td class="tlrb" style="width:40px">7</td>
+                      <td class="tlrb" style="width:40px">8</td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Kicker</td>
+                      <td class="tlrb" style="width:40px">KY1-1</td>
+                      <td class="tlrb" style="width:40px">KY1-2</td>
+                      <td class="tlrb" style="width:40px">KY2-1</td>
+                      <td class="tlrb" style="width:40px">KY2-2</td>
+                      <td class="tlrb" style="width:40px">KX1-1</td>
+                      <td class="tlrb" style="width:40px">KX1-2</td>
+                      <td class="tlrb" style="width:40px">KX2-1</td>
+                      <td class="tlrb" style="width:40px">KX2-2</td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Connected</td>
+                      <td class="tcrb" class="tcr" id="d_amp_align_1"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_align_2"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_align_3"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_align_4"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_align_5"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_align_6"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_align_7"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_align_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >
+                        <input type="button" alt="1" value="Loss of sync" name="webmap" title="OUT@0x00100500 T=uint32 C=1" >
+                      </td>
+                      <td class="tcrb" class="tcr" id="d_amp_loss_1"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_loss_2"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_loss_3"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_loss_4"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_loss_5"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_loss_6"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_loss_7"></td>
+                      <td class="tcrb" class="tcr" id="d_amp_loss_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Link Delay</td>
+                      <td class="tcrb" id="d_amp_delay_1"></td>
+                      <td class="tcrb" id="d_amp_delay_2"></td>
+                      <td class="tcrb" id="d_amp_delay_3"></td>
+                      <td class="tcrb" id="d_amp_delay_4"></td>
+                      <td class="tcrb" id="d_amp_delay_5"></td>
+                      <td class="tcrb" id="d_amp_delay_6"></td>
+                      <td class="tcrb" id="d_amp_delay_7"></td>
+                      <td class="tcrb" id="d_amp_delay_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Link Speed [MHz]</td>
+                      <td class="tcrb" id="d_amp_speed_1"></td>
+                      <td class="tcrb" id="d_amp_speed_2"></td>
+                      <td class="tcrb" id="d_amp_speed_3"></td>
+                      <td class="tcrb" id="d_amp_speed_4"></td>
+                      <td class="tcrb" id="d_amp_speed_5"></td>
+                      <td class="tcrb" id="d_amp_speed_6"></td>
+                      <td class="tcrb" id="d_amp_speed_7"></td>
+                      <td class="tcrb" id="d_amp_speed_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Gate enabled</td>
+                      <td class="tcrb" id="d_amp_gate_ena_1"></td>
+                      <td class="tcrb" id="d_amp_gate_ena_2"></td>
+                      <td class="tcrb" id="d_amp_gate_ena_3"></td>
+                      <td class="tcrb" id="d_amp_gate_ena_4"></td>
+                      <td class="tcrb" id="d_amp_gate_ena_5"></td>
+                      <td class="tcrb" id="d_amp_gate_ena_6"></td>
+                      <td class="tcrb" id="d_amp_gate_ena_7"></td>
+                      <td class="tcrb" id="d_amp_gate_ena_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Gate delay [us]</td>
+                      <td class="tcrb" id="d_amp_gate_del_1"></td>
+                      <td class="tcrb" id="d_amp_gate_del_2"></td>
+                      <td class="tcrb" id="d_amp_gate_del_3"></td>
+                      <td class="tcrb" id="d_amp_gate_del_4"></td>
+                      <td class="tcrb" id="d_amp_gate_del_5"></td>
+                      <td class="tcrb" id="d_amp_gate_del_6"></td>
+                      <td class="tcrb" id="d_amp_gate_del_7"></td>
+                      <td class="tcrb" id="d_amp_gate_del_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Gate length [us]</td>
+                      <td class="tcrb" id="d_amp_gate_len_1"></td>
+                      <td class="tcrb" id="d_amp_gate_len_2"></td>
+                      <td class="tcrb" id="d_amp_gate_len_3"></td>
+                      <td class="tcrb" id="d_amp_gate_len_4"></td>
+                      <td class="tcrb" id="d_amp_gate_len_5"></td>
+                      <td class="tcrb" id="d_amp_gate_len_6"></td>
+                      <td class="tcrb" id="d_amp_gate_len_7"></td>
+                      <td class="tcrb" id="d_amp_gate_len_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >DC Power</td>
+                      <td class="tcrb" id="d_amp_dc_pwr_1"></td>
+                      <td class="tcrb" id="d_amp_dc_pwr_2"></td>
+                      <td class="tcrb" id="d_amp_dc_pwr_3"></td>
+                      <td class="tcrb" id="d_amp_dc_pwr_4"></td>
+                      <td class="tcrb" id="d_amp_dc_pwr_5"></td>
+                      <td class="tcrb" id="d_amp_dc_pwr_6"></td>
+                      <td class="tcrb" id="d_amp_dc_pwr_7"></td>
+                      <td class="tcrb" id="d_amp_dc_pwr_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Selected</td>
+                      <td class="tcrb" id="d_amp_addr_sel_1"></td>
+                      <td class="tcrb" id="d_amp_addr_sel_2"></td>
+                      <td class="tcrb" id="d_amp_addr_sel_3"></td>
+                      <td class="tcrb" id="d_amp_addr_sel_4"></td>
+                      <td class="tcrb" id="d_amp_addr_sel_5"></td>
+                      <td class="tcrb" id="d_amp_addr_sel_6"></td>
+                      <td class="tcrb" id="d_amp_addr_sel_7"></td>
+                      <td class="tcrb" id="d_amp_addr_sel_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Enabled</td>
+                      <td class="tcrb" id="d_amp_enabled_1"></td>
+                      <td class="tcrb" id="d_amp_enabled_2"></td>
+                      <td class="tcrb" id="d_amp_enabled_3"></td>
+                      <td class="tcrb" id="d_amp_enabled_4"></td>
+                      <td class="tcrb" id="d_amp_enabled_5"></td>
+                      <td class="tcrb" id="d_amp_enabled_6"></td>
+                      <td class="tcrb" id="d_amp_enabled_7"></td>
+                      <td class="tcrb" id="d_amp_enabled_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Shutdown</td>
+                      <td class="tcrb" id="d_amp_shutdown_1"></td>
+                      <td class="tcrb" id="d_amp_shutdown_2"></td>
+                      <td class="tcrb" id="d_amp_shutdown_3"></td>
+                      <td class="tcrb" id="d_amp_shutdown_4"></td>
+                      <td class="tcrb" id="d_amp_shutdown_5"></td>
+                      <td class="tcrb" id="d_amp_shutdown_6"></td>
+                      <td class="tcrb" id="d_amp_shutdown_7"></td>
+                      <td class="tcrb" id="d_amp_shutdown_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Fault</td>
+                      <td class="tcrb" id="d_amp_fault_1"></td>
+                      <td class="tcrb" id="d_amp_fault_2"></td>
+                      <td class="tcrb" id="d_amp_fault_3"></td>
+                      <td class="tcrb" id="d_amp_fault_4"></td>
+                      <td class="tcrb" id="d_amp_fault_5"></td>
+                      <td class="tcrb" id="d_amp_fault_6"></td>
+                      <td class="tcrb" id="d_amp_fault_7"></td>
+                      <td class="tcrb" id="d_amp_fault_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Forward Power</td>
+                      <td class="tcrb" id="d_amp_fwd_pwr_1"></td>
+                      <td class="tcrb" id="d_amp_fwd_pwr_2"></td>
+                      <td class="tcrb" id="d_amp_fwd_pwr_3"></td>
+                      <td class="tcrb" id="d_amp_fwd_pwr_4"></td>
+                      <td class="tcrb" id="d_amp_fwd_pwr_5"></td>
+                      <td class="tcrb" id="d_amp_fwd_pwr_6"></td>
+                      <td class="tcrb" id="d_amp_fwd_pwr_7"></td>
+                      <td class="tcrb" id="d_amp_fwd_pwr_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Overtemperature</td>
+                      <td class="tcrb" id="d_amp_overtemp_1"></td>
+                      <td class="tcrb" id="d_amp_overtemp_2"></td>
+                      <td class="tcrb" id="d_amp_overtemp_3"></td>
+                      <td class="tcrb" id="d_amp_overtemp_4"></td>
+                      <td class="tcrb" id="d_amp_overtemp_5"></td>
+                      <td class="tcrb" id="d_amp_overtemp_6"></td>
+                      <td class="tcrb" id="d_amp_overtemp_7"></td>
+                      <td class="tcrb" id="d_amp_overtemp_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Overduty</td>
+                      <td class="tcrb" id="d_amp_overduty_1"></td>
+                      <td class="tcrb" id="d_amp_overduty_2"></td>
+                      <td class="tcrb" id="d_amp_overduty_3"></td>
+                      <td class="tcrb" id="d_amp_overduty_4"></td>
+                      <td class="tcrb" id="d_amp_overduty_5"></td>
+                      <td class="tcrb" id="d_amp_overduty_6"></td>
+                      <td class="tcrb" id="d_amp_overduty_7"></td>
+                      <td class="tcrb" id="d_amp_overduty_8"></td>
+                    </tr>
+<!--                     <tr>
+                      <td class="tlrb" >Forward Max</td>
+                      <td class="tcrb" id="d_amp_fwd_max_1"></td>
+                      <td class="tcrb" id="d_amp_fwd_max_2"></td>
+                      <td class="tcrb" id="d_amp_fwd_max_3"></td>
+                      <td class="tcrb" id="d_amp_fwd_max_4"></td>
+                      <td class="tcrb" id="d_amp_fwd_max_5"></td>
+                      <td class="tcrb" id="d_amp_fwd_max_6"></td>
+                      <td class="tcrb" id="d_amp_fwd_max_7"></td>
+                      <td class="tcrb" id="d_amp_fwd_max_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >Reflected Max</td>  
+                      <td class="tcrb" id="d_amp_refl_max_1"></td>
+                      <td class="tcrb" id="d_amp_refl_max_2"></td>
+                      <td class="tcrb" id="d_amp_refl_max_3"></td>
+                      <td class="tcrb" id="d_amp_refl_max_4"></td>
+                      <td class="tcrb" id="d_amp_refl_max_5"></td>
+                      <td class="tcrb" id="d_amp_refl_max_6"></td>
+                      <td class="tcrb" id="d_amp_refl_max_7"></td>
+                      <td class="tcrb" id="d_amp_refl_max_8"></td>
+                    </tr>
+ -->                    
+                    <tr>
+                      <td class="tlrb" >Overdrive</td>
+                      <td class="tcrb" id="d_amp_overdrive_1"></td>
+                      <td class="tcrb" id="d_amp_overdrive_2"></td>
+                      <td class="tcrb" id="d_amp_overdrive_3"></td>
+                      <td class="tcrb" id="d_amp_overdrive_4"></td>
+                      <td class="tcrb" id="d_amp_overdrive_5"></td>
+                      <td class="tcrb" id="d_amp_overdrive_6"></td>
+                      <td class="tcrb" id="d_amp_overdrive_7"></td>
+                      <td class="tcrb" id="d_amp_overdrive_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >PA1 OK</td>
+                      <td class="tcrb" id="d_amp_pa1_ok_1"></td>
+                      <td class="tcrb" id="d_amp_pa1_ok_2"></td>
+                      <td class="tcrb" id="d_amp_pa1_ok_3"></td>
+                      <td class="tcrb" id="d_amp_pa1_ok_4"></td>
+                      <td class="tcrb" id="d_amp_pa1_ok_5"></td>
+                      <td class="tcrb" id="d_amp_pa1_ok_6"></td>
+                      <td class="tcrb" id="d_amp_pa1_ok_7"></td>
+                      <td class="tcrb" id="d_amp_pa1_ok_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >PA2 OK</td>
+                      <td class="tcrb" id="d_amp_pa2_ok_1"></td>
+                      <td class="tcrb" id="d_amp_pa2_ok_2"></td>
+                      <td class="tcrb" id="d_amp_pa2_ok_3"></td>
+                      <td class="tcrb" id="d_amp_pa2_ok_4"></td>
+                      <td class="tcrb" id="d_amp_pa2_ok_5"></td>
+                      <td class="tcrb" id="d_amp_pa2_ok_6"></td>
+                      <td class="tcrb" id="d_amp_pa2_ok_7"></td>
+                      <td class="tcrb" id="d_amp_pa2_ok_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >PA3 OK</td>
+                      <td class="tcrb" id="d_amp_pa3_ok_1"></td>
+                      <td class="tcrb" id="d_amp_pa3_ok_2"></td>
+                      <td class="tcrb" id="d_amp_pa3_ok_3"></td>
+                      <td class="tcrb" id="d_amp_pa3_ok_4"></td>
+                      <td class="tcrb" id="d_amp_pa3_ok_5"></td>
+                      <td class="tcrb" id="d_amp_pa3_ok_6"></td>
+                      <td class="tcrb" id="d_amp_pa3_ok_7"></td>
+                      <td class="tcrb" id="d_amp_pa3_ok_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >PSU1 OK</td>
+                      <td class="tcrb" id="d_amp_psu1_ok_1"></td>
+                      <td class="tcrb" id="d_amp_psu1_ok_2"></td>
+                      <td class="tcrb" id="d_amp_psu1_ok_3"></td>
+                      <td class="tcrb" id="d_amp_psu1_ok_4"></td>
+                      <td class="tcrb" id="d_amp_psu1_ok_5"></td>
+                      <td class="tcrb" id="d_amp_psu1_ok_6"></td>
+                      <td class="tcrb" id="d_amp_psu1_ok_7"></td>
+                      <td class="tcrb" id="d_amp_psu1_ok_8"></td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" >PSU2 OK</td>
+                      <td class="tcrb" id="d_amp_psu2_ok_1"></td>
+                      <td class="tcrb" id="d_amp_psu2_ok_2"></td>
+                      <td class="tcrb" id="d_amp_psu2_ok_3"></td>
+                      <td class="tcrb" id="d_amp_psu2_ok_4"></td>
+                      <td class="tcrb" id="d_amp_psu2_ok_5"></td>
+                      <td class="tcrb" id="d_amp_psu2_ok_6"></td>
+                      <td class="tcrb" id="d_amp_psu2_ok_7"></td>
+                      <td class="tcrb" id="d_amp_psu2_ok_8"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td class="cws" style="vertical-align:top">
+            <table class="t"  id="webmap2">
+              <tr>
+                <td class="tt" colspan="5" id="test_callback">
+                  SFPs
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:70px"></td>
+                <td class="tlrb" style="width:70px">SFP IN</td>
+                <td class="tlrb" style="width:70px">RX LOSS</td>
+                <td class="tlrb" style="width:70px">TX FAULT</td>
+                <td class="tlrb" style="width:70px">TX DISABLE</td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:140px">BPM2 GTX1</td>
+                <td class="tcrb" id="rtmg_gtx0_sfp_in"></td>
+                <td class="tcrb" id="rtmg_gtx0_rx_loss"></td>
+                <td class="tcrb" id="rtmg_gtx0_tx_fault"></td>
+                <td class="tcrb" id="rtmg_gtx0_tx_disable"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:140px">BPM2 GTX0</td>
+                <td class="tcrb" id="rtmg_gtx1_sfp_in"></td>
+                <td class="tcrb" id="rtmg_gtx1_rx_loss"></td>
+                <td class="tcrb" id="rtmg_gtx1_tx_fault"></td>
+                <td class="tcrb" id="rtmg_gtx1_tx_disable"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:140px">BPM1 GTX1</td>
+                <td class="tcrb" id="rtmg_gtx2_sfp_in"></td>
+                <td class="tcrb" id="rtmg_gtx2_rx_loss"></td>
+                <td class="tcrb" id="rtmg_gtx2_tx_fault"></td>
+                <td class="tcrb" id="rtmg_gtx2_tx_disable"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:140px">BPM1 GTX0</td>
+                <td class="tcrb" id="rtmg_gtx3_sfp_in"></td>
+                <td class="tcrb" id="rtmg_gtx3_rx_loss"></td>
+                <td class="tcrb" id="rtmg_gtx3_tx_fault"></td>
+                <td class="tcrb" id="rtmg_gtx3_tx_disable"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:140px">SYS GTX3</td>
+                <td class="tcrb" id="rtmg_gtx4_sfp_in"></td>
+                <td class="tcrb" id="rtmg_gtx4_rx_loss"></td>
+                <td class="tcrb" id="rtmg_gtx4_tx_fault"></td>
+                <td class="tcrb" id="rtmg_gtx4_tx_disable"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:140px">SYS GTX2</td>
+                <td class="tcrb" id="rtmg_gtx5_sfp_in"></td>
+                <td class="tcrb" id="rtmg_gtx5_rx_loss"></td>
+                <td class="tcrb" id="rtmg_gtx5_tx_fault"></td>
+                <td class="tcrb" id="rtmg_gtx5_tx_disable"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:140px">SYS GTX1</td>
+                <td class="tcrb" id="rtmg_gtx6_sfp_in"></td>
+                <td class="tcrb" id="rtmg_gtx6_rx_loss"></td>
+                <td class="tcrb" id="rtmg_gtx6_tx_fault"></td>
+                <td class="tcrb" id="rtmg_gtx6_tx_disable"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:140px">SYS GTX0</td>
+                <td class="tcrb" id="rtmg_gtx7_sfp_in"></td>
+                <td class="tcrb" id="rtmg_gtx7_rx_loss"></td>
+                <td class="tcrb" id="rtmg_gtx7_tx_fault"></td>
+                <td class="tcrb" id="rtmg_gtx7_tx_disable"></td>
+              </tr>
+            </table>
+            <table class="t"  id="webmap2">
+              <tr>
+                <td class="tt" colspan="5" id="test_callback">
+                  XFEL Bunch Trains
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:60px"></td>
+                <td class="tlrb" style="width:80px">Start</td>
+                <td class="tlrb" style="width:80px">Duration</td>
+                <td class="tlrb" style="width:80px">Increment</td>
+                <td class="tlrb" style="width:80px">Bunch No</td>
+              </tr>
+              <tr>
+                <td class="tlrb">Train 1</td>
+                <td class="tcrb" id="beam1_start"></td>
+                <td class="tcrb" id="beam1_duration"></td>
+                <td class="tcrb" id="beam1_increment"></td>
+                <td class="tcb" id="beam1_length"></td>
+              </tr>
+              <tr>
+                <td class="tlrb">Train 2</td>
+                <td class="tcrb" id="beam2_start"></td>
+                <td class="tcrb" id="beam2_duration"></td>
+                <td class="tcrb" id="beam2_increment"></td>
+                <td class="tcb"  id="beam2_length"></td>
+              </tr>
+            </table>          </td>
+          <td  class="cws" style="vertical-align:top">
+            <table class="t"  id="webmap2">
+              <tr>
+                <td class="tt" colspan="2" id="test_callback">
+                  XFEL Timing Receiver
+                </td>
+              </tr>
+              <tr>
+                <td class="tlrb" style="width:130px">GTX Loss of sync</td>
+                <td class="tcrb" style="width:200px" id="sys_gtx1_lossofsync"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" >Loss counter</td>
+                <td class="tcrb" name="webmap" title="INP@0x00000118 T=uint32"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" >216 MHz Locked</td>
+                <td class="tcrb"  id="pll216M_locked"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" >Pulse number</td>
+                <td class="tcb" id="pulse_num"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" >Date/Time</td>
+                <td class="tcb" id="date1"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" >Beam Mode</td>
+                <td class="tcb" id="beam_mode"></td>
+              </tr>
+              <tr>
+                <td class="tlrb" >Section Pattern</td>
+                <td class="tcb" id="section_pattern"></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td class="cws" style="vertical-align:top">
+                  <table class="t"  id="webmap2">
+                    <tr>
+                      <td class="tt" colspan="2" id="test_callback">
+                        XFEL Timing Events
+                      </td>
+                    <tr>
+                      <td class="tlrb" style="width:80px">IBFB-Y1</td>
+                      <td>
+                        <input type="text" class="num_input" name="webmap" style="width:74px" title="OUT@0x00000104 T=uint8"> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" style="width:80px">IBFB-Y2</td>
+                      <td>
+                        <input type="text" class="num_input" name="webmap" style="width:74px" title="OUT@0x00000105 T=uint8"> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" style="width:80px">IBFB-X1</td>
+                      <td>
+                        <input type="text" class="num_input" name="webmap" style="width:74px" title="OUT@0x00000106 T=uint8"> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" style="width:80px">IBFB-X2</td>
+                      <td>
+                        <input type="text" class="num_input" name="webmap" style="width:74px" title="OUT@0x00000107 T=uint8"> 
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td class="cws" style="vertical-align:top">
+                  <table class="t"  id="webmap2">
+                    <tr>
+                      <td class="tt" colspan="2" id="test_callback">
+                        Received Events
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tlrb" style="width:80px">Number</td>
+                      <td class="tlrb" style="width:80px">Delay</td>
+                    </tr>
+                    <tr>
+                      <td class="tcrb" id="event0_code">&nbsp;</td>
+                      <td class="tcrb" id="event0_delay"></td>
+                    </tr>
+                    <tr>
+                      <td class="tcrb" id="event1_code">&nbsp;</td>
+                      <td class="tcrb" id="event1_delay"></td>
+                    </tr>
+                    <tr>
+                      <td class="tcrb" id="event2_code">&nbsp;</td>
+                      <td class="tcrb" id="event2_delay"></td>
+                    </tr>
+                    <tr>
+                      <td class="tcrb" id="event3_code">&nbsp;</td>
+                      <td class="tcrb" id="event3_delay"></td>
+                    </tr>
+                    <tr>
+                      <td class="tcrb" id="event4_code">&nbsp;</td>
+                      <td class="tcrb" id="event4_delay"></td>
+                    </tr>
+                    <tr>
+                      <td class="tcrb" id="event5_code">&nbsp;</td>
+                      <td class="tcrb" id="event5_delay"></td>
+                    </tr>
+                    <tr>
+                      <td class="tcrb" id="event6_code">&nbsp;</td>
+                      <td class="tcrb" id="event6_delay"></td>
+                    </tr>
+                    <tr>
+                      <td class="tcrb" id="event7_code">&nbsp;</td>
+                      <td class="tcrb" id="event7_delay"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>	
+    </td>
+  </tr>
+</table>
+</div>
+
+<!-- Hidden readout fields used by higher layer to adjust display -->
+<p>
+  <span class="rtmg_sn"         name="webmap" title="INP@0x00003AC4 T=string L=7" style="display:none"></span>
+  <span class="rtmg_sfp1"       name="webmap" title="INP@0x00100408 T=uint32"     style="display:none"></span> 
+  <span class="rtmg_sfp2"       name="webmap" title="INP@0x0010040C T=uint32"     style="display:none"></span> 
+  <span class="date1"           name="webmap" title="INP@0x0000800C T=uint32"     style="display:none"></span> 
+  <span class="pulse_num"       name="webmap" title="INP@0x00008000 T=uint32"     style="display:none"></span> 
+  <span class="beam_mode"       name="webmap" title="INP@0x00008010 T=uint32"     style="display:none"></span> 
+  <span class="section_pattern" name="webmap" title="INP@0x00008014 T=uint32"     style="display:none"></span> 
+  <span class="trg1_ext"        name="webmap" title="INP@0x00000100 T=uint32"     style="display:none"></span> 
+  <span class="beam1_start"     name="webmap" title="INP@0x000080E0 T=uint32"     style="display:none"></span> 
+  <span class="beam1_duration"  name="webmap" title="INP@0x000080E4 T=uint32"     style="display:none"></span> 
+  <span class="beam1_increment" name="webmap" title="INP@0x000080E8 T=uint32"     style="display:none"></span> 
+  <span class="beam1_length"    name="webmap" title="INP@0x000080EC T=uint32"     style="display:none"></span> 
+  <span class="beam2_start"     name="webmap" title="INP@0x000080F0 T=uint32"     style="display:none"></span> 
+  <span class="beam2_duration"  name="webmap" title="INP@0x000080F4 T=uint32"     style="display:none"></span> 
+  <span class="beam2_increment" name="webmap" title="INP@0x000080F8 T=uint32"     style="display:none"></span> 
+  <span class="beam2_length"    name="webmap" title="INP@0x000080FC T=uint32"     style="display:none"></span> 
+  <span class="event0"          name="webmap" title="INP@0x00008018 T=uint32"     style="display:none"></span> 
+  <span class="event1"          name="webmap" title="INP@0x0000801C T=uint32"     style="display:none"></span> 
+  <span class="event2"          name="webmap" title="INP@0x00008020 T=uint32"     style="display:none"></span> 
+  <span class="event3"          name="webmap" title="INP@0x00008024 T=uint32"     style="display:none"></span> 
+  <span class="event4"          name="webmap" title="INP@0x00008028 T=uint32"     style="display:none"></span> 
+  <span class="event5"          name="webmap" title="INP@0x0000802C T=uint32"     style="display:none"></span> 
+  <span class="event6"          name="webmap" title="INP@0x00008030 T=uint32"     style="display:none"></span> 
+  <span class="event7"          name="webmap" title="INP@0x00008034 T=uint32"     style="display:none"></span> 
+  <span class="event8"          name="webmap" title="INP@0x00008038 T=uint32"     style="display:none"></span> 
+  <span class="event9"          name="webmap" title="INP@0x0000803C T=uint32"     style="display:none"></span> 
+  <span class="amp_align_1"     name="webmap" title="INP@0x00100508 T=uint32"     style="display:none"></span> 
+  <span class="amp_align_2"     name="webmap" title="INP@0x00100518 T=uint32"     style="display:none"></span> 
+  <span class="amp_align_3"     name="webmap" title="INP@0x00100528 T=uint32"     style="display:none"></span> 
+  <span class="amp_align_4"     name="webmap" title="INP@0x00100538 T=uint32"     style="display:none"></span> 
+  <span class="amp_align_5"     name="webmap" title="INP@0x00100548 T=uint32"     style="display:none"></span> 
+  <span class="amp_align_6"     name="webmap" title="INP@0x00100558 T=uint32"     style="display:none"></span> 
+  <span class="amp_align_7"     name="webmap" title="INP@0x00100568 T=uint32"     style="display:none"></span> 
+  <span class="amp_align_8"     name="webmap" title="INP@0x00100578 T=uint32"     style="display:none"></span> 
+  <span class="amp_status_1"    name="webmap" title="INP@0x00100510 T=uint32"     style="display:none"></span> 
+  <span class="amp_status_2"    name="webmap" title="INP@0x00100520 T=uint32"     style="display:none"></span> 
+  <span class="amp_status_3"    name="webmap" title="INP@0x00100530 T=uint32"     style="display:none"></span> 
+  <span class="amp_status_4"    name="webmap" title="INP@0x00100540 T=uint32"     style="display:none"></span> 
+  <span class="amp_status_5"    name="webmap" title="INP@0x00100550 T=uint32"     style="display:none"></span> 
+  <span class="amp_status_6"    name="webmap" title="INP@0x00100560 T=uint32"     style="display:none"></span> 
+  <span class="amp_status_7"    name="webmap" title="INP@0x00100570 T=uint32"     style="display:none"></span> 
+  <span class="amp_status_8"    name="webmap" title="INP@0x00100580 T=uint32"     style="display:none"></span> 
+  <span class="amp_gate_1"      name="webmap" title="INP@0x00100504 T=uint32"     style="display:none"></span> 
+  <span class="amp_gate_2"      name="webmap" title="INP@0x00100514 T=uint32"     style="display:none"></span> 
+  <span class="amp_gate_3"      name="webmap" title="INP@0x00100524 T=uint32"     style="display:none"></span> 
+  <span class="amp_gate_4"      name="webmap" title="INP@0x00100534 T=uint32"     style="display:none"></span> 
+  <span class="amp_gate_5"      name="webmap" title="INP@0x00100544 T=uint32"     style="display:none"></span> 
+  <span class="amp_gate_6"      name="webmap" title="INP@0x00100554 T=uint32"     style="display:none"></span> 
+  <span class="amp_gate_7"      name="webmap" title="INP@0x00100564 T=uint32"     style="display:none"></span> 
+  <span class="amp_gate_8"      name="webmap" title="INP@0x00100574 T=uint32"     style="display:none"></span> 
+  <span class="ip_version"      name="webmap" title="INP@0x00100502 T=uint16"     style="display:none"></span> 
+</p>
+
+
+<!-- Optional foot section for the WebMAP driver functionality - BEGIN-->
+<div id="webmap_foot">
+	<p id="webmap_info"> 
+		<span id="webmap_version"></span>
+		<span id="webmap_message" style="color:green"></span>
+		<span id="webmap_error" style="color:red"></span>
+	</p>
+</div>
+<!-- Optional foot section for the WebMAP driver functionality - END-->
+
+<p id="webmap_test"></p>
+
+<script type="text/javascript">rtmg_init();</script>
+
+</body>
+</html>
